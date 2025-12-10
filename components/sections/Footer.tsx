@@ -1,4 +1,4 @@
-import logo from "../../public/kako-nacrtati-brod-44.jpg";
+import logo from "../../public/android-chrome-192x192.png";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { client, projectId } from "@/lib/sanity";
@@ -18,24 +18,29 @@ const KATEGORIJE_QUERY = `*[_type == "kategorija" && !defined(roditeljskaKategor
   redosled
 } | order(redosled asc, naziv asc)`;
 
-const staticLinks = [{ name: "Početna", href: "/" }];
+const staticLinks = [
+  { name: "Početna", href: "/" },
+  { name: "O Udruženju", href: "/o-udruzenju" },
+  { name: "Odaberite putovanja", href: "/putovanja" },
+  { name: "Galerija", href: "/galerija" },
+];
 
 const contactInfo = [
   {
-    text: "+38162 8197532",
-    href: "tel:+381628197532",
+    text: "+38163 8815544",
+    href: "tel:+381638815544",
     type: "phone",
   },
   {
-    text: "putovanjapustoloviks@gmail.com",
-    href: "mailto:putovanjapustoloviks@gmail.com",
+    text: "duhovni.kod@gmail.com",
+    href: "mailto:duhovni.kod@gmail.com",
     type: "email",
   },
-  {
-    text: "Jakšićeva 19, Kruševac",
-    href: "https://maps.app.goo.gl/icP136FDaEpYtKc59",
-    type: "address",
-  },
+  // {
+  //   text: "Jakšićeva 19, Kruševac",
+  //   href: "https://maps.app.goo.gl/icP136FDaEpYtKc59",
+  //   type: "address",
+  // },
 ];
 
 export default function Footer() {
@@ -82,11 +87,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mx-auto">
           {/* Brand */}
           <div className=" text-center mx-auto">
-            <p className="text-2xl font-bold">Pustolovi</p>
+            <p className="text-2xl font-bold">Duhovni Kod</p>
 
-            <p className="text-gray-400 mb-4">
-              Vaš vodič kroz nezaboravne avanture širom sveta.
-            </p>
             <Image
               src={logo}
               width={120}
@@ -150,21 +152,26 @@ export default function Footer() {
               ))}
             </ul>
             <div className="flex space-x-4 justify-center mt-4">
-              <a href="https://www.facebook.com/profile.php?id=100085703319746" target={"_blank"} className="hover:text-gray-400 transition-colors">
+              <a
+                href=""
+                target={"_blank"}
+                className="hover:text-gray-400 transition-colors"
+              >
                 <Facebook />
               </a>
-              <a href="https://www.instagram.com/pustolovi_krusevac/" target={"_blank"} className="hover:text-gray-400 transition-colors">
+              <a
+                href=""
+                target={"_blank"}
+                className="hover:text-gray-400 transition-colors"
+              >
                 <Instagram />
-              </a>
-              <a href="https://www.youtube.com/@pustoloviks" target={"_blank"} className="hover:text-gray-400 transition-colors">
-                <Youtube className="w-7 h-7" />
               </a>
             </div>
           </div>
         </div>
 
         <div className="flex flex-col md:flex-row justify-center border-t border-gray-400 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2025 Pustolovi. Sva prava zadržana.</p>
+          <p>&copy; 2025 Duhovni Kod. Sva prava zadržana.</p>
           <a href="https://www.manikamwebsolutions.com/" target="_blank">
             izrada sajta:{" "}
             <span className="font-bold text-white hover:text-gray-400 transition-colors">

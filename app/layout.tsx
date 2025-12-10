@@ -5,11 +5,11 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Pustolovi - Vaš Vodič kroz Nezaboravne Avanture",
+  title: "Duhovni Kod - Putovanja na Kosovo i Metohiju",
   description:
-    "Avanturna turistička agencija koja kreira jedinstvene pustolove. Otkrijte svet kroz naše nezaboravne avanture i ekspedicije.",
+    "Udruženje Duhovni Kod organizuje putovanja na Kosovo i Metohiju uz stručno vođenje. Pridružite nam se na putovanju različitom od svih drugih, uz dружење, priče iz istorije i duhovno nadahnuće.",
   keywords:
-    "pustolovi, avanture, ekspedicije, avanturna putovanja, outdoor aktivnosti, ekstremni sportovi",
+    "kosovo i metohija, duhovna putovanja, kulturna baština, manastiri, putovanja srbija, srpske svetinje",
   icons: {
     icon: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",

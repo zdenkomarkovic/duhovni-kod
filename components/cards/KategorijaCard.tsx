@@ -36,11 +36,20 @@ export default function KategorijaCard({ kategorija }: KategorijaCardProps) {
     <Link href={`/kategorija/${kategorija.slug.current}`}>
       <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer">
         <div className="relative h-48 overflow-hidden">
-          {kategorija.slika ? (
-            <img 
-              src={urlFor(kategorija.slika).width(400).height(300).url()} 
+          {kategorija.slika && kategorija.slika.asset ? (
+            <img
+              src={urlFor(kategorija.slika).width(400).height(300).url()}
               alt={kategorija.naziv}
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                if (target.parentElement) {
+                  const fallback = document.createElement('div');
+                  fallback.className = `w-full h-full bg-gradient-to-br from-${kategorija.boja || 'blue'}-400 to-${kategorija.boja || 'blue'}-600 flex items-center justify-center`;
+                  target.parentElement.appendChild(fallback);
+                }
+              }}
             />
           ) : (
             <div className={`w-full h-full bg-gradient-to-br from-${kategorija.boja || 'blue'}-400 to-${kategorija.boja || 'blue'}-600 flex items-center justify-center`}>

@@ -43,21 +43,7 @@ export const galerija = defineType({
           ]
         }
       ]
-    } as any),
-    defineField({
-      name: 'kategorija',
-      title: 'Kategorija Galerije',
-      type: 'string',
-      options: {
-        list: [
-          { title: 'Destinacije', value: 'destinacije' },
-          { title: 'Aktivnosti', value: 'aktivnosti' },
-          { title: 'Smeštaj', value: 'smestaj' },
-          { title: 'Hrana', value: 'hrana' },
-          { title: 'Kultura', value: 'kultura' }
-        ]
-      }
-    })
+    } as any)
   ],
   preview: {
     select: {

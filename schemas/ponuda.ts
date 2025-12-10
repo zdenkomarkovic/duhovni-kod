@@ -78,19 +78,6 @@ export const ponuda = defineType({
         Rule.max(5).warning("Preporučujemo maksimalno 5 kategorija"),
     }),
     defineField({
-      name: "klasifikacije",
-      title: "Klasifikacije",
-      type: "array",
-      of: [
-        {
-          type: "reference",
-          to: [{ type: "klasifikacija" }],
-        },
-      ],
-      description:
-        "Dodajte klasifikacije kao što su: Hotel, Apartman, Avio prevoz, itd.",
-    }),
-    defineField({
       name: "ocena",
       title: "Ocena (1-5)",
       type: "number",

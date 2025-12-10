@@ -49,13 +49,6 @@ export const PONUDE_QUERY = `*[_type == "ponuda"] {
       naziv,
       slug
     }
-  },
-  klasifikacije[]-> {
-    naziv,
-    slug,
-    boja,
-    tip,
-    ikona
   }
 }`;
 
@@ -69,8 +62,3 @@ export const KATEGORIJE_QUERY = `*[_type == "kategorija" && !defined(roditeljska
   boja,
   redosled
 } | order(redosled asc, naziv asc)`;
-
-export const KLASIFIKACIJE_QUERY = `*[_type == "klasifikacija"] {
-  _id,
-  naziv
-} | order(naziv asc)`;

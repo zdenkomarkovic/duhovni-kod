@@ -15,11 +15,6 @@ export interface Kategorija {
   };
 }
 
-export interface Klasifikacija {
-  _id: string;
-  naziv: string;
-}
-
 export interface Ponuda {
   _id: string;
   naziv: string;
@@ -44,7 +39,6 @@ export interface Ponuda {
   napomeneTabele?: any[];
   stilTabele?: string;
   kategorije?: Kategorija[];
-  klasifikacije?: Klasifikacija[];
   datumKreiranja?: string;
 }
 
@@ -70,5 +64,4 @@ export interface Galerija {
     alt?: string;
     caption?: string;
   }>;
-  kategorija?: string;
 }

@@ -4,9 +4,9 @@ import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './schemas'
 
 export default defineConfig({
-  name: 'pustolovi-studio',
-  title: 'Pustolovi CMS',
-  
+  name: 'duhovni-kod-studio',
+  title: 'Duhovni Kod CMS',
+
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '',
   dataset: 'production',
   

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { client, projectId } from "@/lib/sanity";
-import logo from "../public/kako-nacrtati-brod-44.jpg";
+import logo from "../public/android-chrome-192x192.png";
 import { Menu, X, Phone } from "lucide-react";
 import Link from "next/link";
 import Image from "@/node_modules/next/image";
@@ -77,16 +77,39 @@ export default function Navbar() {
               height={60}
               alt="turisticka agencija"
             />
-            <span className="text-2xl font-bold text-gray-900">TA PUSTOLOVI</span>
+            <span className="text-2xl font-bold text-gray-900">
+              Duhovni Kod
+            </span>
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center space-x-5">
+          <div className="hidden lg:flex items-center space-x-3">
             <Link
               href="/"
               className="text-gray-700 hover:text-blue-600 transition-colors"
             >
               Početna
+            </Link>
+
+            <Link
+              href="/o-udruzenju"
+              className="text-gray-700 hover:text-blue-600 transition-colors"
+            >
+              O Udruženju
+            </Link>
+
+            <Link
+              href="/putovanja"
+              className="text-gray-700 hover:text-blue-600 transition-colors"
+            >
+              Odaberite putovanja
+            </Link>
+
+            <Link
+              href="/galerija"
+              className="text-gray-700 hover:text-blue-600 transition-colors"
+            >
+              Galerija
             </Link>
 
             {/* Kategorije */}
@@ -103,24 +126,16 @@ export default function Navbar() {
               ))}
 
             {/* Call Button */}
-          <div>
-          <a
-              href="tel:+381628197532"
-              className="flex items-center space-x-2 text-green-600 hover:text-green-700 transition-colors font-medium"
-              title="Pozovi nas"
-            >
-              <Phone className="w-4 h-4" />
-              <span>+38162 8197532</span>
-            </a>
-            <a
-              href="mailto:putovanjapustoloviks@gmail.com"
-              className="text-xs text-wrap text-green-600 hover:text-green-700 transition-colors font-medium"
-              title=""
-            >
-           
-              <span>putovanjapustoloviks@gmail.com</span>
-            </a>
-            </div> 
+            <div>
+              <a
+                href="tel:+381638815544"
+                className="flex items-center space-x-2 text-green-600 hover:text-green-700 transition-colors font-medium"
+                title="Pozovi nas"
+              >
+                <Phone className="w-4 h-4" />
+                <span>+38163 8815544</span>
+              </a>
+            </div>
 
             <Button className="bg-blue-600 hover:bg-blue-700">
               <Link href="/kontakt">Kontakt</Link>
@@ -152,6 +167,30 @@ export default function Navbar() {
                 Početna
               </Link>
 
+              <Link
+                href="/o-udruzenju"
+                className="text-gray-700 hover:text-blue-600 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                O Udruženju
+              </Link>
+
+              <Link
+                href="/putovanja"
+                className="text-gray-700 hover:text-blue-600 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Odaberite putovanja
+              </Link>
+
+              <Link
+                href="/galerija"
+                className="text-gray-700 hover:text-blue-600 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Galerija
+              </Link>
+
               {/* Mobile Kategorije */}
               {!loading && glavneKategorije.length > 0 && (
                 <>
@@ -173,12 +212,12 @@ export default function Navbar() {
 
               {/* Mobile Call Button */}
               <a
-                href="tel:+381628197532"
+                href="tel:+381638815544"
                 className="flex items-center space-x-3 text-green-600 hover:text-green-700 transition-colors font-medium py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 <Phone className="w-5 h-5" />
-                <span>062 8197532</span>
+                <span>063 8815544</span>
               </a>
 
               <Button

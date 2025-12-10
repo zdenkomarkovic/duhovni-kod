@@ -9,17 +9,17 @@ const contactInfo = [
   {
     icon: <Phone className="w-6 h-6" />,
     title: "Telefon",
-    details: ["+381 11 123 4567", "+381 64 123 4567"]
+    details: ["+381 63 8815544"]
   },
   {
     icon: <Mail className="w-6 h-6" />,
     title: "Email",
-    details: ["info@pustolovi.com", "avanture@pustolovi.com"]
+    details: ["duhovni.kod@gmail.com"]
   },
   {
     icon: <MapPin className="w-6 h-6" />,
     title: "Adresa",
-    details: ["Knez Mihailova 12", "11000 Beograd, Srbija"]
+    details: ["Jakšićeva 19", "Kruševac, Srbija"]
   }
 ];
 

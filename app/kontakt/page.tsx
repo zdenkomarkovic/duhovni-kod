@@ -5,15 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Phone,
-  Mail,
-  MapPin,
-  Clock,
-  Send,
-  ArrowLeft,
-  CheckCircle,
-} from "lucide-react";
+import { Phone, Mail, Send, ArrowLeft, CheckCircle } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/sections/Footer";
 import Link from "next/link";
@@ -22,29 +14,14 @@ const contactInfo = [
   {
     icon: <Phone className="w-6 h-6" />,
     title: "Telefon",
-    details: ["+38162 8197532"],
-    href: "tel:+381628197532",
+    details: ["+38163 8815544"],
+    href: "tel:+381638815544",
   },
   {
     icon: <Mail className="w-6 h-6" />,
     title: "Email",
-    details: ["putovanjapustoloviks@gmail.com"],
-    href: "mailto:putovanjapustoloviks@gmail.com",
-  },
-  {
-    icon: <MapPin className="w-6 h-6" />,
-    title: "Adresa",
-    details: ["Jakšićeva 19", "37000 Kruševac, Srbija"],
-    href: "https://maps.app.goo.gl/3L5JULxxnAqbNHtA8",
-  },
-  {
-    icon: <Clock className="w-6 h-6" />,
-    title: "Radno vreme",
-    details: [
-      "Pon - Pet: 09:00 - 17:00",
-      "Subota: 09:00 - 14:00",
-      "Nedelja: Zatvoreno",
-    ],
+    details: ["duhovni.kod@gmail.com"],
+    href: "mailto:duhovni.kod@gmail.com",
   },
 ];
 
@@ -103,7 +80,7 @@ export default function KontaktPage() {
             </h1>
             <p className="text-xl text-blue-100 max-w-3xl mx-auto">
               Spremni smo da odgovorimo na sva vaša pitanja i pomoćićemo vam da
-              isplanirate savršenu pustolovinu
+              isplanirate savršeno putovanje
             </p>
           </div>
         </div>
@@ -112,53 +89,6 @@ export default function KontaktPage() {
       {/* Kontakt informacije */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            {contactInfo.map((info, index) => (
-              <Card
-                key={index}
-                className="text-center hover:shadow-lg transition-shadow"
-              >
-                <CardContent className="p-8">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-full mb-4">
-                    {info.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold mb-4 text-gray-900">
-                    {info.title}
-                  </h3>
-                  <div className="space-y-2">
-                    {info.details.map((detail, i) => (
-                      <p
-                        key={i}
-                        className="text-gray-600 break-words text-sm leading-relaxed"
-                      >
-                        {info.href && i === 0 ? (
-                          <a
-                            href={info.href}
-                            className="text-blue-600 hover:text-blue-700 transition-colors break-all"
-                            target={
-                              info.href.startsWith("http")
-                                ? "_blank"
-                                : undefined
-                            }
-                            rel={
-                              info.href.startsWith("http")
-                                ? "noopener noreferrer"
-                                : undefined
-                            }
-                          >
-                            {detail}
-                          </a>
-                        ) : (
-                          detail
-                        )}
-                      </p>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Kontakt forma */}
             <Card className="shadow-xl">
@@ -308,56 +238,52 @@ export default function KontaktPage() {
 
             {/* Mapa i dodatne informacije */}
             <div className="space-y-8">
-              {/* Google mapa */}
-              <Card className="shadow-xl">
-                <CardContent className="p-0">
-                  <div className="h-64 bg-gray-200 rounded-lg overflow-hidden">
-                    <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d18888.754472794808!2d21.311075146723187!3d43.58351181975881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475687e4f58e9a63%3A0x8ac12e987a85d16e!2z0IjQsNC60YjQuNGb0LXQstCwIDE5LCDQmtGA0YPRiNC10LLQsNGG!5e0!3m2!1ssr!2srs!4v1752677926930!5m2!1ssr!2srs"
-                      width="100%"
-                      height="256"
-                      style={{ border: 0 }}
-                      allowFullScreen
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                      title="Pustolovi lokacija"
-                    ></iframe>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Dodatne informacije */}
-              <Card className="shadow-xl">
-                <CardContent className="p-8">
-                  <h3 className="text-xl font-bold mb-4 text-gray-900">
-                    Zašto izabrati Pustolove?
-                  </h3>
-                  <ul className="space-y-3 text-gray-600">
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                      <span>
-                        Višegodišnje iskustvo u organizovanju putovanja
-                      </span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                      <span>Licencirana turistička agencija</span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                      <span>24/7 podrška tokom putovanja</span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                      <span>Prilagođeni paketi prema vašim potrebama</span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                      <span>Najbolje cene na tržištu</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
+              <div className="grid  gap-8 mb-16">
+                {contactInfo.map((info, index) => (
+                  <Card
+                    key={index}
+                    className="text-center hover:shadow-lg transition-shadow"
+                  >
+                    <CardContent className="p-8">
+                      <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-full mb-4">
+                        {info.icon}
+                      </div>
+                      <h3 className="text-xl font-semibold mb-4 text-gray-900">
+                        {info.title}
+                      </h3>
+                      <div className="space-y-2">
+                        {info.details.map((detail, i) => (
+                          <p
+                            key={i}
+                            className="text-gray-600 break-words text-sm leading-relaxed"
+                          >
+                            {info.href && i === 0 ? (
+                              <a
+                                href={info.href}
+                                className="text-blue-600 hover:text-blue-700 transition-colors break-all"
+                                target={
+                                  info.href.startsWith("http")
+                                    ? "_blank"
+                                    : undefined
+                                }
+                                rel={
+                                  info.href.startsWith("http")
+                                    ? "noopener noreferrer"
+                                    : undefined
+                                }
+                              >
+                                {detail}
+                              </a>
+                            ) : (
+                              detail
+                            )}
+                          </p>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
           </div>
         </div>

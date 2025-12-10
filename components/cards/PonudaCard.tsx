@@ -15,11 +15,6 @@ interface Kategorija {
   };
 }
 
-interface Klasifikacija {
-  _id: string;
-  naziv: string;
-}
-
 interface PonudaCardProps {
   ponuda: {
     _id: string;
@@ -32,7 +27,6 @@ interface PonudaCardProps {
     ocena: number;
     istaknuto: boolean;
     kategorije: Kategorija[];
-    klasifikacije?: Klasifikacija[];
   };
 }
 
@@ -43,13 +37,20 @@ export default function PonudaCard({ ponuda }: PonudaCardProps) {
         ponuda.istaknuto ? 'ring-2 ring-yellow-400' : ''
       }`}
     >
-      <div className="relative h-48 overflow-hidden">
-        {ponuda.glavnaSlika && (
-          <img 
-            src={urlFor(ponuda.glavnaSlika).width(400).height(300).url()} 
+      <div className="relative h-48 overflow-hidden bg-gray-200">
+        {ponuda.glavnaSlika && ponuda.glavnaSlika.asset ? (
+          <img
+            src={urlFor(ponuda.glavnaSlika).width(400).height(300).url()}
             alt={ponuda.naziv}
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = '/images/1 Манастир Дечани-min.jpg';
+            }}
           />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-100 to-teal-100">
+            <span className="text-gray-400 text-sm">Slika se učitava...</span>
+          </div>
         )}
         <div className="absolute top-4 right-4 flex gap-2">
           {ponuda.istaknuto && (
@@ -67,24 +68,15 @@ export default function PonudaCard({ ponuda }: PonudaCardProps) {
       <CardContent className="p-6 flex-1 flex flex-col">
         <div className="flex items-center gap-2 mb-2 flex-wrap">
           {ponuda.kategorije?.map((kategorija, index) => (
-            <Badge 
+            <Badge
               key={index}
               variant={kategorija.roditeljskaKategorija ? "secondary" : "outline"}
               className={`text-${kategorija.boja || 'blue'}-600 border-${kategorija.boja || 'blue'}-600`}
             >
-              {kategorija.roditeljskaKategorija 
+              {kategorija.roditeljskaKategorija
                 ? `${kategorija.roditeljskaKategorija.naziv} → ${kategorija.naziv}`
                 : kategorija.naziv
               }
-            </Badge>
-          ))}
-          {ponuda.klasifikacije?.map((klasifikacija, index) => (
-            <Badge 
-              key={`klasifikacija-${index}`}
-              variant="secondary"
-              className="text-gray-600 bg-gray-100"
-            >
-              {klasifikacija.naziv}
             </Badge>
           ))}
         </div>

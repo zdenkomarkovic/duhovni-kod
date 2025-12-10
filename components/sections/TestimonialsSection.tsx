@@ -3,21 +3,21 @@ import { Star } from 'lucide-react';
 
 const testimonials = [
   {
-    name: "Marko Petrović",
+    name: "Milica Stojanović",
     location: "Beograd",
-    text: "Neverojatn iskustvo! Pustolovi su organizovali savršenu avanturu za našu porodicu. Sve je bilo precizno i profesionalno.",
+    text: "Poseta Dečanima i Gračanici me je duboko dirnula. Vodič nam je ispričao priče koje se ne nalaze u knjigama. Ovo nije obično putovanje - ovo je duhovno iskustvo.",
     rating: 5
   },
   {
-    name: "Ana Jovanović",
+    name: "Nenad Jovanović",
     location: "Novi Sad",
-    text: "Najbolja avanturna agencija! Doživeli smo nezaboravnu pustolovinu i odličan servis. Definitivno ću ponovo putovati sa njima.",
+    text: "Sa Duhovnim Kodom sam prvi put posetio Kosovo. Organizacija je bila besprekorna, a atmosfera na putovanju neverovatna. Vratio sam se promenjen čovek.",
     rating: 5
   },
   {
-    name: "Stefan Nikolić",
+    name: "Jelena Nikolić",
     location: "Niš",
-    text: "Profesionalni tim koji se brine o svakom detalju. Naša avantura u Grčkoj je bila nezaboravna!",
+    text: "Svaki manastir, svaka priča, svaki trenutak - sve je bilo dirljivo. Preporučujem svima da dođu i sami vide lepotu naše baštine. Hvala Duhovnom Kodu!",
     rating: 5
   }
 ];
@@ -28,10 +28,10 @@ export default function TestimonialsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Šta Kažu Naši Pustolovci
+            Utisci putnika
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Više od 10,000 pustolovaca je doživelo nezaboravne avanture sa nama
+            Čujte priče onih koji su se vratili sa duhovnog putovanja na Kosovo i Metohiju
           </p>
         </div>
 

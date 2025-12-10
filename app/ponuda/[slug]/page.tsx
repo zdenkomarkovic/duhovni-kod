@@ -112,20 +112,28 @@ const portableTextComponents = {
     ),
   },
   types: {
-    image: ({ value }: any) => (
-      <div className="my-8">
-        <img
-          src={urlFor(value).width(800).height(600).url()}
-          alt={value.alt || "Slika"}
-          className="w-full rounded-lg shadow-lg"
-        />
-        {value.caption && (
-          <p className="text-sm text-gray-600 mt-2 text-center italic">
-            {value.caption}
-          </p>
-        )}
-      </div>
-    ),
+    image: ({ value }: any) => {
+      if (!value || !value.asset) {
+        return null;
+      }
+      return (
+        <div className="my-8">
+          <img
+            src={urlFor(value).width(800).height(600).url()}
+            alt={value.alt || "Slika"}
+            className="w-full rounded-lg shadow-lg"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = '/images/1 Манастир Дечани-min.jpg';
+            }}
+          />
+          {value.caption && (
+            <p className="text-sm text-gray-600 mt-2 text-center italic">
+              {value.caption}
+            </p>
+          )}
+        </div>
+      );
+    },
   },
 };
 
@@ -207,9 +215,9 @@ export default function PonudaPage({ params }: { params: { slug: string } }) {
     );
   }
 
-  const allImages = [ponuda.glavnaSlika, ...(ponuda.galerija || [])].filter(
-    Boolean
-  );
+  const allImages = [ponuda.glavnaSlika, ...(ponuda.galerija || [])]
+    .filter(Boolean)
+    .filter((img) => img && img.asset);
 
   return (
     <div className="min-h-screen bg-gray-50 pt-20">
@@ -237,8 +245,8 @@ export default function PonudaPage({ params }: { params: { slug: string } }) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
           {/* Image Gallery */}
           <div className="space-y-4">
-            <div className="relative h-96 rounded-lg overflow-hidden shadow-xl">
-              {allImages[selectedImage] && (
+            <div className="relative h-96 rounded-lg overflow-hidden shadow-xl bg-gray-200">
+              {allImages.length > 0 && allImages[selectedImage] ? (
                 <img
                   onClick={() => setIsLightboxOpen(true)}
                   src={urlFor(allImages[selectedImage])
@@ -247,7 +255,14 @@ export default function PonudaPage({ params }: { params: { slug: string } }) {
                     .url()}
                   alt={ponuda.naziv}
                   className="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = '/images/1 Манастир Дечани-min.jpg';
+                  }}
                 />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-100 to-teal-100">
+                  <span className="text-gray-400">Slika se učitava...</span>
+                </div>
               )}
               {ponuda.istaknuto && (
                 <div className="absolute top-4 left-4">
@@ -269,11 +284,18 @@ export default function PonudaPage({ params }: { params: { slug: string } }) {
                         : "border-gray-200 hover:border-gray-300"
                     }`}
                   >
-                    <img
-                      src={urlFor(image).width(200).height(150).url()}
-                      alt={`${ponuda.naziv} ${index + 1}`}
-                      className="w-full h-full object-cover"
-                    />
+                    {image && image.asset ? (
+                      <img
+                        src={urlFor(image).width(200).height(150).url()}
+                        alt={`${ponuda.naziv} ${index + 1}`}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = '/images/1 Манастир Дечани-min.jpg';
+                        }}
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gray-200"></div>
+                    )}
                   </button>
                 ))}
               </div>
@@ -294,7 +316,7 @@ export default function PonudaPage({ params }: { params: { slug: string } }) {
                   <X className="w-6 h-6" />
                 </button>
 
-                {allImages[selectedImage] && (
+                {allImages[selectedImage] && allImages[selectedImage].asset && (
                   <img
                     src={urlFor(allImages[selectedImage])
                       .width(1200)
@@ -303,6 +325,9 @@ export default function PonudaPage({ params }: { params: { slug: string } }) {
                     alt={ponuda.naziv}
                     className="max-w-full max-h-full object-contain"
                     onClick={(e) => e.stopPropagation()}
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = '/images/1 Манастир Дечани-min.jpg';
+                    }}
                   />
                 )}
 
@@ -414,13 +439,13 @@ export default function PonudaPage({ params }: { params: { slug: string } }) {
 
             {/* Action Buttons */}
             <div className="flex flex-col md:flex-row gap-4">
-              <a href="tel:+381628197532" className="flex-1">
+              <a href="tel:+381638815544" className="flex-1">
                 <Button
                   size="lg"
                   className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 flex items-center justify-center"
                 >
                   <Phone className="w-5 h-5 mr-2" />
-                  Pozovite nas - 062 8197532
+                  Pozovite nas - 063 8815544
                 </Button>
               </a>
               <Button
@@ -461,10 +486,10 @@ export default function PonudaPage({ params }: { params: { slug: string } }) {
                   <div className="flex items-center">
                     <Mail className="w-4 h-4 mr-3 text-blue-600" />
                     <a
-                      href="mailto:putovanjapustoloviks@gmail.com"
+                      href="mailto:duhovni.kod@gmail.com"
                       className="text-blue-600 hover:text-blue-700"
                     >
-                      putovanjapustoloviks@gmail.com
+                      duhovni.kod@gmail.com
                     </a>
                   </div>
                 </div>
