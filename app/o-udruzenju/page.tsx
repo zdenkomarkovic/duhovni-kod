@@ -1,16 +1,13 @@
-'use client';
+"use client";
 
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/sections/Footer';
-import FloatingCallButton from '@/components/FloatingCallButton';
-import { Card, CardContent } from '@/components/ui/card';
-import Image from 'next/image';
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/sections/Footer";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function OUdruzenјuPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
-      <FloatingCallButton />
 
       <main className="pt-24 pb-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -27,9 +24,10 @@ export default function OUdruzenјuPage() {
             <CardContent className="p-8 md:p-12">
               <div className="prose prose-lg max-w-none">
                 <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                  Udruženje organizuje putovanja na <strong>Kosovo i Metohију</strong> uz stručno
-                  vođenje. Pridružite nam se na putovanju različitom od svih
-                  drugih, uz druženje, priče iz istorije i duhovno nadahnuće.
+                  Udruženje organizuje putovanja na{" "}
+                  <strong>Kosovo i Metohију</strong> uz stručno vođenje.
+                  Pridružite nam se na putovanju različitom od svih drugih, uz
+                  druženje, priče iz istorije i duhovno nadahnuće.
                 </p>
 
                 <p className="text-lg text-gray-700 leading-relaxed mb-6">
@@ -39,8 +37,8 @@ export default function OUdruzenјuPage() {
                 </p>
 
                 <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                  Proverite zašto se naša putovanja razlikuju od drugih, zašto se
-                  putnici vraćaju i preporučuju nas.
+                  Proverite zašto se naša putovanja razlikuju od drugih, zašto
+                  se putnici vraćaju i preporučuju nas.
                 </p>
 
                 {/* Istaknuta poruka */}
@@ -49,9 +47,9 @@ export default function OUdruzenјuPage() {
                     Naša misija
                   </p>
                   <p className="text-gray-700">
-                    Očuvanje kulturne i duhovne baštine kroz organizovana putovanja
-                    na Kosovo i Metohiju, gde svaki učesnik može doživeti autentično
-                    iskustvo naše istorije i tradicije.
+                    Očuvanje kulturne i duhovne baštine kroz organizovana
+                    putovanja na Kosovo i Metohiju, gde svaki učesnik može
+                    doživeti autentično iskustvo naše istorije i tradicije.
                   </p>
                 </div>
 
@@ -61,8 +59,9 @@ export default function OUdruzenјuPage() {
                       Stručno vođenje
                     </h3>
                     <p className="text-gray-700">
-                      Naša putovanja vode iskusni vodiči koji dele znanje o istoriji,
-                      kulturi i duhovnom značaju svakog mesta koje posetimo.
+                      Naša putovanja vode iskusni vodiči koji dele znanje o
+                      istoriji, kulturi i duhovnom značaju svakog mesta koje
+                      posetimo.
                     </p>
                   </div>
 
@@ -71,8 +70,9 @@ export default function OUdruzenјuPage() {
                       Duhovno nadahnuće
                     </h3>
                     <p className="text-gray-700">
-                      Svako putovanje je prilika za duhovno osvежenje i povezivanje
-                      sa našim korenima kroz posete manastirima i svetinjama.
+                      Svako putovanje je prilika za duhovno osvежenje i
+                      povezivanje sa našim korenima kroz posete manastirima i
+                      svetinjama.
                     </p>
                   </div>
                 </div>

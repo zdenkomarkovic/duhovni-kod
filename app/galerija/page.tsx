@@ -1,13 +1,18 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/sections/Footer';
-import FloatingCallButton from '@/components/FloatingCallButton';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { client, urlFor, projectId } from '@/lib/sanity';
-import { X, ChevronLeft, ChevronRight, ArrowLeft, Image as ImageIcon } from 'lucide-react';
+import { useState, useEffect } from "react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/sections/Footer";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { client, urlFor, projectId } from "@/lib/sanity";
+import {
+  X,
+  ChevronLeft,
+  ChevronRight,
+  ArrowLeft,
+  Image as ImageIcon,
+} from "lucide-react";
 
 interface GalerijaItem {
   _id: string;
@@ -34,7 +39,9 @@ const GALERIJA_QUERY = `*[_type == "galerija"] | order(_createdAt desc) {
 export default function GalerijaPage() {
   const [galerije, setGalerije] = useState<GalerijaItem[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selectedGalerija, setSelectedGalerija] = useState<GalerijaItem | null>(null);
+  const [selectedGalerija, setSelectedGalerija] = useState<GalerijaItem | null>(
+    null
+  );
   const [selectedImage, setSelectedImage] = useState<{
     url: string;
     alt: string;
@@ -45,7 +52,7 @@ export default function GalerijaPage() {
   useEffect(() => {
     async function fetchGalerije() {
       if (
-        projectId === 'your-project-id-here' ||
+        projectId === "your-project-id-here" ||
         !projectId ||
         projectId.length < 5
       ) {
@@ -57,7 +64,7 @@ export default function GalerijaPage() {
         const data = await client.fetch(GALERIJA_QUERY);
         setGalerije(data);
       } catch (error) {
-        console.warn('Sanity not configured yet');
+        console.warn("Sanity not configured yet");
       } finally {
         setLoading(false);
       }
@@ -80,7 +87,7 @@ export default function GalerijaPage() {
 
     setSelectedImage({
       url: urlFor(slika).width(1200).height(900).url(),
-      alt: slika.alt || 'Galerija slika',
+      alt: slika.alt || "Galerija slika",
       caption: slika.caption,
       slikaIndex,
     });
@@ -90,13 +97,13 @@ export default function GalerijaPage() {
     setSelectedImage(null);
   };
 
-  const navigateImage = (direction: 'prev' | 'next') => {
+  const navigateImage = (direction: "prev" | "next") => {
     if (!selectedImage || !selectedGalerija) return;
 
     const totalSlike = selectedGalerija.slike.length;
     let newIndex = selectedImage.slikaIndex;
 
-    if (direction === 'next') {
+    if (direction === "next") {
       newIndex = (newIndex + 1) % totalSlike;
     } else {
       newIndex = (newIndex - 1 + totalSlike) % totalSlike;
@@ -128,7 +135,6 @@ export default function GalerijaPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
-      <FloatingCallButton />
 
       <main className="pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -138,7 +144,8 @@ export default function GalerijaPage() {
               Galerija
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Pogledajte najlepše trenutke sa naših putovanja na Kosovo i Metohiju
+              Pogledajte najlepše trenutke sa naših putovanja na Kosovo i
+              Metohiju
             </p>
             <div className="w-24 h-1 bg-blue-600 mx-auto mt-6"></div>
           </div>
@@ -169,12 +176,15 @@ export default function GalerijaPage() {
                         <div className="relative h-64 overflow-hidden bg-gray-200">
                           {coverImage ? (
                             <img
-                              src={urlFor(coverImage).width(600).height(400).url()}
+                              src={urlFor(coverImage)
+                                .width(600)
+                                .height(400)
+                                .url()}
                               alt={galerija.naziv}
                               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                               onError={(e) => {
                                 (e.target as HTMLImageElement).src =
-                                  '/images/1 Манастир Дечани-min.jpg';
+                                  "/images/1 Манастир Дечани-min.jpg";
                               }}
                             />
                           ) : (
@@ -186,7 +196,8 @@ export default function GalerijaPage() {
 
                           {/* Badge sa brojem slika */}
                           <div className="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                            {validSlike.length} {validSlike.length === 1 ? 'slika' : 'slika'}
+                            {validSlike.length}{" "}
+                            {validSlike.length === 1 ? "slika" : "slika"}
                           </div>
 
                           {/* Naziv galerije na dnu slike */}
@@ -224,7 +235,9 @@ export default function GalerijaPage() {
                   {selectedGalerija.naziv}
                 </h2>
                 {selectedGalerija.opis && (
-                  <p className="text-gray-600 text-lg">{selectedGalerija.opis}</p>
+                  <p className="text-gray-600 text-lg">
+                    {selectedGalerija.opis}
+                  </p>
                 )}
               </div>
 
@@ -241,11 +254,14 @@ export default function GalerijaPage() {
                       <div className="relative h-64 overflow-hidden">
                         <img
                           src={urlFor(slika).width(400).height(300).url()}
-                          alt={slika.alt || `${selectedGalerija.naziv} ${slikaIndex + 1}`}
+                          alt={
+                            slika.alt ||
+                            `${selectedGalerija.naziv} ${slikaIndex + 1}`
+                          }
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                           onError={(e) => {
                             (e.target as HTMLImageElement).src =
-                              '/images/1 Манастир Дечани-min.jpg';
+                              "/images/1 Манастир Дечани-min.jpg";
                           }}
                         />
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
@@ -299,7 +315,7 @@ export default function GalerijaPage() {
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                navigateImage('prev');
+                navigateImage("prev");
               }}
               className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 bg-black/50 rounded-full p-2"
             >
@@ -308,7 +324,7 @@ export default function GalerijaPage() {
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                navigateImage('next');
+                navigateImage("next");
               }}
               className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 bg-black/50 rounded-full p-2"
             >

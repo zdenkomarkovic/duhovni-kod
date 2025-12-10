@@ -1,13 +1,12 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/sections/Footer';
-import FloatingCallButton from '@/components/FloatingCallButton';
-import PonudaCard from '@/components/cards/PonudaCard';
-import { Button } from '@/components/ui/button';
-import { client, projectId } from '@/lib/sanity';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState, useEffect } from "react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/sections/Footer";
+import PonudaCard from "@/components/cards/PonudaCard";
+import { Button } from "@/components/ui/button";
+import { client, projectId } from "@/lib/sanity";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Kategorija {
   naziv: string;
@@ -63,7 +62,7 @@ export default function PutovanjaPage() {
   useEffect(() => {
     async function fetchPonude() {
       if (
-        projectId === 'your-project-id-here' ||
+        projectId === "your-project-id-here" ||
         !projectId ||
         projectId.length < 5
       ) {
@@ -75,7 +74,7 @@ export default function PutovanjaPage() {
         const data = await client.fetch(PONUDE_QUERY);
         setPonude(data);
       } catch (error) {
-        console.warn('Sanity not configured yet');
+        console.warn("Sanity not configured yet");
       } finally {
         setLoading(false);
       }
@@ -92,7 +91,7 @@ export default function PutovanjaPage() {
 
   const goToPage = (page: number) => {
     setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const goToPrevious = () => {
@@ -121,21 +120,21 @@ export default function PutovanjaPage() {
         for (let i = 1; i <= 4; i++) {
           pages.push(i);
         }
-        pages.push('...');
+        pages.push("...");
         pages.push(totalPages);
       } else if (currentPage >= totalPages - 2) {
         pages.push(1);
-        pages.push('...');
+        pages.push("...");
         for (let i = totalPages - 3; i <= totalPages; i++) {
           pages.push(i);
         }
       } else {
         pages.push(1);
-        pages.push('...');
+        pages.push("...");
         for (let i = currentPage - 1; i <= currentPage + 1; i++) {
           pages.push(i);
         }
-        pages.push('...');
+        pages.push("...");
         pages.push(totalPages);
       }
     }
@@ -166,7 +165,6 @@ export default function PutovanjaPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
-      <FloatingCallButton />
 
       <main className="pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -176,17 +174,18 @@ export default function PutovanjaPage() {
               Odaberite putovanja
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Istražite naše organizovane ture na Kosovo i Metohiju i pronađite savršeno putovanje za vas
+              Istražite naše organizovane ture na Kosovo i Metohiju i pronađite
+              savršeno putovanje za vas
             </p>
             <div className="w-24 h-1 bg-blue-600 mx-auto mt-6"></div>
           </div>
 
           {/* Broj rezultata */}
           <div className="mb-6 text-gray-600">
-            Prikazano <span className="font-semibold">{startIndex + 1}</span> -{' '}
+            Prikazano <span className="font-semibold">{startIndex + 1}</span> -{" "}
             <span className="font-semibold">
               {Math.min(endIndex, ponude.length)}
-            </span>{' '}
+            </span>{" "}
             od <span className="font-semibold">{ponude.length}</span> putovanja
           </div>
 
@@ -221,7 +220,7 @@ export default function PutovanjaPage() {
                     </Button>
 
                     {getPageNumbers().map((page, index) => {
-                      if (page === '...') {
+                      if (page === "...") {
                         return (
                           <span key={`ellipsis-${index}`} className="px-2">
                             ...
@@ -233,11 +232,11 @@ export default function PutovanjaPage() {
                         <Button
                           key={page}
                           onClick={() => goToPage(page as number)}
-                          variant={currentPage === page ? 'default' : 'outline'}
+                          variant={currentPage === page ? "default" : "outline"}
                           className={
                             currentPage === page
-                              ? 'bg-blue-600 hover:bg-blue-700'
-                              : ''
+                              ? "bg-blue-600 hover:bg-blue-700"
+                              : ""
                           }
                         >
                           {page}
