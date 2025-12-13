@@ -82,23 +82,59 @@ export default function TestimonialsSection() {
         </div>
 
         <div className="relative">
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr_1fr] items-start gap-4 px-4 md:px-8">
-            {/* Leva kolona - sakrivena na mobilnom */}
+          {/* Mobilni prikaz - samo centralna kartica */}
+          <div className="md:hidden">
+            <div className="relative grid px-4">
+              {testimonials.map((testimonial, idx) => (
+                <Card
+                  key={testimonial._id}
+                  className="border-2 border-blue-200 shadow-2xl col-start-1 row-start-1 transition-opacity duration-700 h-full"
+                  style={{
+                    opacity: idx === currentSlide ? 1 : 0,
+                    pointerEvents: idx === currentSlide ? "auto" : "none",
+                  }}
+                >
+                  <CardContent className="p-6 flex flex-col justify-between h-full">
+                    <div className="flex justify-center mb-6">
+                      {[...Array(testimonial.ocena)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className="w-5 h-5 fill-yellow-400 text-yellow-400"
+                        />
+                      ))}
+                    </div>
+                    <p className="text-base text-gray-700 text-center mb-6 italic leading-relaxed flex-grow flex items-center justify-center">
+                      "{testimonial.tekst}"
+                    </p>
+                    <div className="text-center">
+                      <p className="font-bold text-xl text-gray-900">
+                        {testimonial.ime}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop prikaz - tri kartice */}
+          <div className="hidden md:grid md:grid-cols-[1fr_1.5fr_1fr] items-stretch gap-4 px-8">
+            {/* Leva kolona */}
             <div
-              className="relative grid opacity-40 hover:opacity-60 transition-opacity cursor-pointer overflow-hidden hidden md:block"
+              className="relative grid opacity-40 hover:opacity-60 transition-opacity cursor-pointer overflow-hidden h-full"
               onClick={prevSlide}
             >
               {testimonials.map((testimonial, idx) => (
                 <Card
                   key={testimonial._id}
-                  className="border-2 border-gray-100 shadow-lg col-start-1 row-start-1"
+                  className="border-2 border-gray-100 shadow-lg col-start-1 row-start-1 transition-opacity duration-700 h-full"
                   style={{
                     opacity: idx === getPrevIndex(currentSlide) ? 1 : 0,
                     pointerEvents:
                       idx === getPrevIndex(currentSlide) ? "auto" : "none",
                   }}
                 >
-                  <CardContent className="p-4 md:p-6 flex flex-col justify-between min-h-full">
+                  <CardContent className="p-6 flex flex-col justify-between h-full">
                     <div className="flex justify-center mb-3">
                       {[...Array(testimonial.ocena)].map((_, i) => (
                         <Star
@@ -107,7 +143,7 @@ export default function TestimonialsSection() {
                         />
                       ))}
                     </div>
-                    <p className="text-sm md:text-base text-gray-700 text-center italic leading-relaxed flex-grow flex items-center justify-center">
+                    <p className="text-base text-gray-700 text-center italic leading-relaxed flex-grow flex items-center justify-center">
                       "{testimonial.tekst}"
                     </p>
                     <div className="text-center mt-4">
@@ -121,17 +157,17 @@ export default function TestimonialsSection() {
             </div>
 
             {/* Centralna kolona */}
-            <div className="relative grid">
+            <div className="relative grid h-full">
               {testimonials.map((testimonial, idx) => (
                 <Card
                   key={testimonial._id}
-                  className="border-2 border-blue-200 shadow-2xl md:transform md:scale-105 col-start-1 row-start-1"
+                  className="border-2 border-blue-200 shadow-2xl transform scale-105 col-start-1 row-start-1 transition-opacity duration-700 h-full"
                   style={{
                     opacity: idx === currentSlide ? 1 : 0,
                     pointerEvents: idx === currentSlide ? "auto" : "none",
                   }}
                 >
-                  <CardContent className="p-6 md:p-10 flex flex-col justify-between min-h-full">
+                  <CardContent className="p-10 flex flex-col justify-between h-full">
                     <div className="flex justify-center mb-6">
                       {[...Array(testimonial.ocena)].map((_, i) => (
                         <Star
@@ -140,7 +176,7 @@ export default function TestimonialsSection() {
                         />
                       ))}
                     </div>
-                    <p className="text-base md:text-lg text-gray-700 text-center mb-6 italic leading-relaxed flex-grow flex items-center justify-center">
+                    <p className="text-lg text-gray-700 text-center mb-6 italic leading-relaxed flex-grow flex items-center justify-center">
                       "{testimonial.tekst}"
                     </p>
                     <div className="text-center">
@@ -153,22 +189,22 @@ export default function TestimonialsSection() {
               ))}
             </div>
 
-            {/* Desna kolona - sakrivena na mobilnom */}
+            {/* Desna kolona */}
             <div
-              className="relative grid opacity-40 hover:opacity-60 transition-opacity cursor-pointer overflow-hidden hidden md:block"
+              className="relative grid opacity-40 hover:opacity-60 transition-opacity cursor-pointer overflow-hidden h-full"
               onClick={nextSlide}
             >
               {testimonials.map((testimonial, idx) => (
                 <Card
                   key={testimonial._id}
-                  className="border-2 border-gray-100 shadow-lg col-start-1 row-start-1"
+                  className="border-2 border-gray-100 shadow-lg col-start-1 row-start-1 transition-opacity duration-700 h-full"
                   style={{
                     opacity: idx === getNextIndex(currentSlide) ? 1 : 0,
                     pointerEvents:
                       idx === getNextIndex(currentSlide) ? "auto" : "none",
                   }}
                 >
-                  <CardContent className="p-4 md:p-6 flex flex-col justify-between min-h-full">
+                  <CardContent className="p-6 flex flex-col justify-between h-full">
                     <div className="flex justify-center mb-3">
                       {[...Array(testimonial.ocena)].map((_, i) => (
                         <Star
@@ -177,7 +213,7 @@ export default function TestimonialsSection() {
                         />
                       ))}
                     </div>
-                    <p className="text-sm md:text-base text-gray-700 text-center italic leading-relaxed flex-grow flex items-center justify-center">
+                    <p className="text-base text-gray-700 text-center italic leading-relaxed flex-grow flex items-center justify-center">
                       "{testimonial.tekst}"
                     </p>
                     <div className="text-center mt-4">

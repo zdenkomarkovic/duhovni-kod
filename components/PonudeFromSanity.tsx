@@ -33,7 +33,7 @@ interface Ponuda {
 
 const ITEMS_PER_PAGE = 8;
 
-const ISTAKNUTE_PONUDE_QUERY = `*[_type == "ponuda" && istaknuto == true] {
+const ISTAKNUTE_PONUDE_QUERY = `*[_type == "ponuda" && (!defined(kategorije) || length(kategorije) == 0)] {
   _id,
   naziv,
   slug,
@@ -58,7 +58,7 @@ const ISTAKNUTE_PONUDE_QUERY = `*[_type == "ponuda" && istaknuto == true] {
   }
 } | order(_createdAt desc)`;
 
-const ISTAKNUTE_COUNT_QUERY = `count(*[_type == "ponuda" && istaknuto == true])`;
+const ISTAKNUTE_COUNT_QUERY = `count(*[_type == "ponuda" && (!defined(kategorije) || length(kategorije) == 0)])`;
 
 export default function PonudeFromSanity() {
   const [allPonude, setAllPonude] = useState<Ponuda[]>([]);
@@ -143,11 +143,11 @@ export default function PonudeFromSanity() {
   if (allPonude.length === 0) {
     return (
       <div className="text-center py-12">
-        <h3 className="text-2xl font-semibold mb-4">Nema istaknutih ponuda</h3>
+        <h3 className="text-2xl font-semibold mb-4">Nema ponuda</h3>
         <p className="text-gray-600 mb-6">
-          {projectId === 'your-project-id-here' || !projectId || projectId.length < 5 
+          {projectId === 'your-project-id-here' || !projectId || projectId.length < 5
             ? 'Kreirajte Sanity projekat i dodajte Project ID u .env.local fajl.'
-            : 'Označite neke ponude kao istaknute u Sanity Studio.'
+            : 'Trenutno nema ponuda koje nisu zavedene pod kategorije.'
           }
         </p>
       </div>
