@@ -65,3 +65,11 @@ export interface Galerija {
     caption?: string;
   }>;
 }
+
+export interface Utisak {
+  _id: string;
+  ime: string;
+  tekst: string;
+  ocena: number;
+  istaknuto?: boolean;
+}

@@ -1,25 +1,76 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
 const heroImages = [
-  { src: "/images/1 Манастир Дечани-min.jpg", alt: "Манастир Дечани", title: "Манастир Дечани" },
-  { src: "/images/2 Манастир Дечани улаз-min.jpg", alt: "Манастир Дечани улаз", title: "Манастир Дечани улаз" },
-  { src: "/images/3 Манастир Грачаница-min.jpg", alt: "Манастир Грачаница", title: "Манастир Грачаница" },
-  { src: "/images/5 Свети Архангели улаз-min.jpg", alt: "Свети Архангели улаз", title: "Свети Архангели улаз" },
-  { src: "/images/6 Свети Архангели-min.jpg", alt: "Свети Архангели", title: "Свети Архангели" },
-  { src: "/images/7 Пећка патријаршија-min.jpg", alt: "Пећка патријаршија", title: "Пећка патријаршија" },
-  { src: "/images/8 Пећка припрата-min.jpg", alt: "Пећка припрата", title: "Пећка припрата" },
+  {
+    src: "/images/1 Манастир Дечани-min.jpg",
+    alt: "Манастир Дечани",
+    title: "Манастир Дечани",
+  },
+  {
+    src: "/images/2 Манастир Дечани улаз-min.jpg",
+    alt: "Манастир Дечани улаз",
+    title: "Манастир Дечани улаз",
+  },
+  {
+    src: "/images/3 Манастир Грачаница-min.jpg",
+    alt: "Манастир Грачаница",
+    title: "Манастир Грачаница",
+  },
+  {
+    src: "/images/5 Свети Архангели улаз-min.jpg",
+    alt: "Свети Архангели улаз",
+    title: "Свети Архангели улаз",
+  },
+  {
+    src: "/images/6 Свети Архангели-min.jpg",
+    alt: "Свети Архангели",
+    title: "Свети Архангели",
+  },
+  {
+    src: "/images/7 Пећка патријаршија-min.jpg",
+    alt: "Пећка патријаршија",
+    title: "Пећка патријаршија",
+  },
+  {
+    src: "/images/8 Пећка припрата-min.jpg",
+    alt: "Пећка припрата",
+    title: "Пећка припрата",
+  },
   { src: "/images/9 Призрен-min.jpg", alt: "Призрен", title: "Призрен" },
-  { src: "/images/10 Богородица Љевишка-min.jpg", alt: "Богородица Љевишка", title: "Богородица Љевишка" },
-  { src: "/images/11 Црква св Ђорђа Призрен-min.jpg", alt: "Црква св Ђорђа Призрен", title: "Црква св Ђорђа Призрен" },
-  { src: "/images/12 Виница цара Душана-min.jpg", alt: "Виница цара Душана", title: "Виница цара Душана" },
-  { src: "/images/13 Црква св Стефана Велика Хоча-min.jpg", alt: "Црква св Стефана Велика Хоča", title: "Црква св Стефана Велика Хоча" },
-  { src: "/images/14 Музеј вина Велика Хоча-min.jpg", alt: "Музеј вина Велика Хоча", title: "Музеј вина Велика Хоча" },
-  { src: "/images/15 Споменик на Косову пољу-min.jpg", alt: "Споменик на Косову пољу", title: "Споменик на Косову пољу" },
+  {
+    src: "/images/10 Богородица Љевишка-min.jpg",
+    alt: "Богородица Љевишка",
+    title: "Богородица Љевишка",
+  },
+  {
+    src: "/images/11 Црква св Ђорђа Призрен-min.jpg",
+    alt: "Црква св Ђорђа Призрен",
+    title: "Црква св Ђорђа Призрен",
+  },
+  {
+    src: "/images/12 Виница цара Душана-min.jpg",
+    alt: "Виница цара Душана",
+    title: "Виница цара Душана",
+  },
+  {
+    src: "/images/13 Црква св Стефана Велика Хоча-min.jpg",
+    alt: "Црква св Стефана Велика Хоča",
+    title: "Црква св Стефана Велика Хоча",
+  },
+  {
+    src: "/images/14 Музеј вина Велика Хоча-min.jpg",
+    alt: "Музеј вина Велика Хоча",
+    title: "Музеј вина Велика Хоча",
+  },
+  {
+    src: "/images/15 Споменик на Косову пољу-min.jpg",
+    alt: "Споменик на Косову пољу",
+    title: "Споменик на Косову пољу",
+  },
 ];
 
 export default function HeroSection() {
@@ -38,7 +89,9 @@ export default function HeroSection() {
   };
 
   const prevImage = () => {
-    setCurrentImage((prev) => (prev - 1 + heroImages.length) % heroImages.length);
+    setCurrentImage(
+      (prev) => (prev - 1 + heroImages.length) % heroImages.length
+    );
   };
 
   const goToImage = (index: number) => {
@@ -91,21 +144,23 @@ export default function HeroSection() {
 
       {/* Sadržaj */}
       <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
-        <h1 className="flex flex-col text-4xl md:text-7xl font-bold mb-6 animate-fade-in">
-          Kosovo i Metohija -{" "}
+        <h1 className="flex flex-col text-2xl md:text-6xl font-bold mb-6 animate-fade-in">
+          Завештање наших предака на
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">
-            Naša Duhovna Baština
+            Косову и Метохији
           </span>
+          је светиљка која нам обасјава душу.
         </h1>
-        <p className="text-xl md:text-2xl mb-8 text-gray-100 animate-fade-in-delay">
-          Putovanje kroz vekove istorije, vere i kulture. Otkrijte lepotu srpskih
-          svetinja i doživite duhovno iskustvo koje će vas promeniti zauvek.
+        <p className="text-lg md:text-2xl mb-8 text-gray-100 animate-fade-in-delay">
+          Захваљујући њој, разумемо своју духовну суштину.Посетите Косово и
+          Метохију и упознајте свој{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">
+            духовни код
+          </span>
+          !
         </p>
-        <p className="text-lg md:text-xl mb-8 text-gray-200 animate-fade-in-delay">
-          Pridružite se organizovanim putovanjima uz stručno vođenje i saznajte zašto je
-          <span className="text-yellow-400 font-bold"> Kosovo i Metohija naše ogledalo i naš odraz</span>
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-delay-2">
+
+        {/* <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-delay-2">
           <a href="#destinations">
             <Button
               size="lg"
@@ -115,7 +170,7 @@ export default function HeroSection() {
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </a>
-        </div>
+        </div> */}
       </div>
 
       {/* Dots indikatori */}

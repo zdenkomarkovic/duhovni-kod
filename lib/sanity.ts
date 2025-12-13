@@ -62,3 +62,11 @@ export const KATEGORIJE_QUERY = `*[_type == "kategorija" && !defined(roditeljska
   boja,
   redosled
 } | order(redosled asc, naziv asc)`;
+
+export const UTISCI_QUERY = `*[_type == "utisak" && prikazano == true] {
+  _id,
+  ime,
+  tekst,
+  ocena,
+  istaknuto
+} | order(istaknuto desc)`;

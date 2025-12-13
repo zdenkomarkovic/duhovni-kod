@@ -3,6 +3,7 @@ import { kategorija } from "./kategorija";
 import { blog } from "./blog";
 import { galerija } from "./galerija";
 import { tabela } from "./tabela";
+import { utisak } from "./utisak";
 
 export const schemaTypes = [
   ponuda,
@@ -10,4 +11,5 @@ export const schemaTypes = [
   blog,
   galerija,
   tabela,
+  utisak,
 ];

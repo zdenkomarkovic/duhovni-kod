@@ -1,26 +1,30 @@
-import { Church, Users, Heart, BookOpen } from 'lucide-react';
+import { Church, Users, Heart, BookOpen } from "lucide-react";
 
 const features = [
   {
     icon: <Church className="w-6 h-6" />,
     title: "Poseta svetinjama",
-    description: "Dečani, Gračanica, Pećka Patrijaršija i druge znamenitosti"
+    description:
+      "Највеће светиње Косова и Метохије, Старог Раса и Моравске Србије",
   },
   {
     icon: <Users className="w-6 h-6" />,
     title: "Stručno vođenje",
-    description: "Iskusni vodiči sa dubokim poznavanjem istorije i kulture"
+    description:
+      "Искусни лиценцирани водичи вашем путовању дају нову димензију",
   },
   {
     icon: <Heart className="w-6 h-6" />,
-    title: "Duhovno iskustvo",
-    description: "Više od turizma - putovanje kroz vekove vere i tradicije"
+    title: "Више од туризма",
+    description:
+      "Духовност, историја, дружење, забава, планинарење, гастрономија",
   },
   {
     icon: <BookOpen className="w-6 h-6" />,
-    title: "Priče iz istorije",
-    description: "Saznajte priče koje ne piše u knjigama od stručnih vodiča"
-  }
+    title: "Понуде за компаније,",
+    description:
+      "Јединствени team building програм на Косову и Метохији за пословне кориснике",
+  },
 ];
 
 export default function FeaturesSection() {

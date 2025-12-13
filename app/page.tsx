@@ -17,7 +17,6 @@ export default function Home() {
       <FeaturesSection />
       <KategorijeFromSanity />
       <DestinationsSection />
-      <NewsletterSection />
       <TestimonialsSection />
       <Footer />
     </main>
