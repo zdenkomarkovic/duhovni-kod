@@ -33,7 +33,7 @@ interface Ponuda {
 
 const ITEMS_PER_PAGE = 8;
 
-const ISTAKNUTE_PONUDE_QUERY = `*[_type == "ponuda" && istaknuto == true] {
+const PONUDE_BEZ_KATEGORIJA_QUERY = `*[_type == "ponuda" && !defined(kategorije[0])] {
   _id,
   naziv,
   slug,
@@ -58,9 +58,9 @@ const ISTAKNUTE_PONUDE_QUERY = `*[_type == "ponuda" && istaknuto == true] {
   }
 } | order(_createdAt desc)`;
 
-const ISTAKNUTE_COUNT_QUERY = `count(*[_type == "ponuda" && istaknuto == true])`;
+const PONUDE_BEZ_KATEGORIJA_COUNT_QUERY = `count(*[_type == "ponuda" && !defined(kategorije[0])])`;
 
-export default function PonudeFromSanity() {
+export default function PonudeBezKategorije() {
   const [allPonude, setAllPonude] = useState<Ponuda[]>([]);
   const [displayedPonude, setDisplayedPonude] = useState<Ponuda[]>([]);
   const [totalCount, setTotalCount] = useState(0);
@@ -77,11 +77,11 @@ export default function PonudeFromSanity() {
 
       try {
         // Fetch total count
-        const count = await client.fetch(ISTAKNUTE_COUNT_QUERY);
+        const count = await client.fetch(PONUDE_BEZ_KATEGORIJA_COUNT_QUERY);
         setTotalCount(count);
 
         // Fetch all ponude
-        const data = await client.fetch(ISTAKNUTE_PONUDE_QUERY);
+        const data = await client.fetch(PONUDE_BEZ_KATEGORIJA_QUERY);
         setAllPonude(data);
       } catch (error) {
         console.warn('Sanity not configured yet - using demo mode');
@@ -143,11 +143,11 @@ export default function PonudeFromSanity() {
   if (allPonude.length === 0) {
     return (
       <div className="text-center py-12">
-        <h3 className="text-2xl font-semibold mb-4">Nema istaknutih ponuda</h3>
+        <h3 className="text-2xl font-semibold mb-4">Nema dostupnih putovanja</h3>
         <p className="text-gray-600 mb-6">
           {projectId === 'your-project-id-here' || !projectId || projectId.length < 5
             ? 'Kreirajte Sanity projekat i dodajte Project ID u .env.local fajl.'
-            : 'Označite neke ponude kao istaknute u Sanity Studio.'
+            : 'Trenutno nema ponuda koje nisu zavedene pod kategorije.'
           }
         </p>
       </div>
@@ -182,11 +182,11 @@ export default function PonudeFromSanity() {
               <ChevronLeft className="w-4 h-4 mr-1" />
               Prethodna
             </Button>
-            
+
             <div className="flex space-x-1">
               {[...Array(totalPages)].map((_, index) => {
                 const page = index + 1;
-                
+
                 // Show first page, last page, current page and adjacent pages
                 if (
                   page === 1 ||

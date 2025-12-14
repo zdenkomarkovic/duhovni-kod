@@ -1,3 +1,5 @@
+"use client";
+
 import logo from "../../public/android-chrome-192x192.png";
 import Link from "next/link";
 import { useState, useEffect } from "react";

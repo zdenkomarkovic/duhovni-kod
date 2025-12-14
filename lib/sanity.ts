@@ -10,7 +10,7 @@ export { projectId };
 export const client = createClient({
   projectId,
   dataset,
-  useCdn: false, // Privremeno false da izbegnemo cache
+  useCdn: true,
   apiVersion: '2024-01-01',
 });
 

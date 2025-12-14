@@ -120,7 +120,7 @@ export default function Navbar() {
             <div>
               <a
                 href="tel:+381638815544"
-                className="flex items-center space-x-2 text-green-600 hover:text-green-700 transition-colors font-medium"
+                className="flex px-3 items-center space-x-2 text-green-600 hover:text-green-700 transition-colors font-medium"
                 title="Pozovi nas"
               >
                 <Phone className="w-4 h-4" />
