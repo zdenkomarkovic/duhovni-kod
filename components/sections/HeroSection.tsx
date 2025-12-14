@@ -123,7 +123,7 @@ export default function HeroSection() {
         </div>
       ))}
 
-      <div className="absolute inset-0 bg-black/50" />
+      <div className="absolute inset-0 bg-black/30" />
 
       {/* Navigation arrows */}
       <button
@@ -145,15 +145,13 @@ export default function HeroSection() {
       {/* Sadržaj */}
       <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
         <h1 className="flex flex-col text-2xl md:text-6xl font-bold mb-6 animate-fade-in">
-          Завештање наших предака на
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">
-            Косову и Метохији
+          Посетите
+          <span className="pb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">
+            Косову и Метохијy.
           </span>
-          је светиљка која нам обасјава душу.
         </h1>
         <p className="text-lg md:text-2xl mb-8 text-gray-100 animate-fade-in-delay">
-          Захваљујући њој, разумемо своју духовну суштину.Посетите Косово и
-          Метохију и упознајте свој{" "}
+          Yпознајте свој{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">
             духовни код
           </span>

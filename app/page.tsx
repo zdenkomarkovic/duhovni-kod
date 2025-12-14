@@ -6,7 +6,6 @@ import FeaturesSection from "@/components/sections/FeaturesSection";
 import DestinationsSection from "@/components/sections/DestinationsSection";
 import Footer from "@/components/sections/Footer";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
-import Kreiraj from "@/components/Kreiraj";
 
 export default function Home() {
   return (
@@ -15,7 +14,7 @@ export default function Home() {
       <HeroSection />
       <FeaturesSection />
       <DestinationsSection />
-      <Kreiraj />
+
       <TestimonialsSection />
       <Footer />
     </main>

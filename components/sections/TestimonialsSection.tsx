@@ -76,8 +76,7 @@ export default function TestimonialsSection() {
             Utisci putnika
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Čujte priče onih koji su se vratili sa duhovnog putovanja na Kosovo
-            i Metohiju
+            Погледајте неке од утисака наших путника
           </p>
         </div>
 
@@ -94,7 +93,7 @@ export default function TestimonialsSection() {
                     pointerEvents: idx === currentSlide ? "auto" : "none",
                   }}
                 >
-                  <CardContent className="p-6 flex flex-col justify-between h-full">
+                  <CardContent className="p-4 flex flex-col justify-between h-full">
                     <div className="flex justify-center mb-6">
                       {[...Array(testimonial.ocena)].map((_, i) => (
                         <Star
@@ -103,11 +102,11 @@ export default function TestimonialsSection() {
                         />
                       ))}
                     </div>
-                    <p className="text-base text-gray-700 text-center mb-6 italic leading-relaxed flex-grow flex items-center justify-center">
+                    <p className="text-sm text-gray-700 text-center mb-6 italic leading-relaxed flex-grow flex items-center justify-center">
                       "{testimonial.tekst}"
                     </p>
                     <div className="text-center">
-                      <p className="font-bold text-xl text-gray-900">
+                      <p className="font-bold text-base text-gray-900">
                         {testimonial.ime}
                       </p>
                     </div>
@@ -134,7 +133,7 @@ export default function TestimonialsSection() {
                       idx === getPrevIndex(currentSlide) ? "auto" : "none",
                   }}
                 >
-                  <CardContent className="p-6 flex flex-col justify-between h-full">
+                  <CardContent className="p-4 flex flex-col justify-between h-full">
                     <div className="flex justify-center mb-3">
                       {[...Array(testimonial.ocena)].map((_, i) => (
                         <Star
@@ -143,11 +142,11 @@ export default function TestimonialsSection() {
                         />
                       ))}
                     </div>
-                    <p className="text-base text-gray-700 text-center italic leading-relaxed flex-grow flex items-center justify-center">
+                    <p className="text-sm text-gray-700 text-center italic leading-relaxed flex-grow flex items-center justify-center">
                       "{testimonial.tekst}"
                     </p>
                     <div className="text-center mt-4">
-                      <p className="font-bold text-base text-gray-900">
+                      <p className="font-bold text-sm text-gray-900">
                         {testimonial.ime}
                       </p>
                     </div>
@@ -167,7 +166,7 @@ export default function TestimonialsSection() {
                     pointerEvents: idx === currentSlide ? "auto" : "none",
                   }}
                 >
-                  <CardContent className="p-10 flex flex-col justify-between h-full">
+                  <CardContent className="p-6 flex flex-col justify-between h-full">
                     <div className="flex justify-center mb-6">
                       {[...Array(testimonial.ocena)].map((_, i) => (
                         <Star
@@ -176,11 +175,11 @@ export default function TestimonialsSection() {
                         />
                       ))}
                     </div>
-                    <p className="text-lg text-gray-700 text-center mb-6 italic leading-relaxed flex-grow flex items-center justify-center">
+                    <p className="text-base text-gray-700 text-center mb-6 italic leading-relaxed flex-grow flex items-center justify-center">
                       "{testimonial.tekst}"
                     </p>
                     <div className="text-center">
-                      <p className="font-bold text-xl text-gray-900">
+                      <p className="font-bold text-lg text-gray-900">
                         {testimonial.ime}
                       </p>
                     </div>
@@ -204,7 +203,7 @@ export default function TestimonialsSection() {
                       idx === getNextIndex(currentSlide) ? "auto" : "none",
                   }}
                 >
-                  <CardContent className="p-6 flex flex-col justify-between h-full">
+                  <CardContent className="p-4 flex flex-col justify-between h-full">
                     <div className="flex justify-center mb-3">
                       {[...Array(testimonial.ocena)].map((_, i) => (
                         <Star
@@ -213,11 +212,11 @@ export default function TestimonialsSection() {
                         />
                       ))}
                     </div>
-                    <p className="text-base text-gray-700 text-center italic leading-relaxed flex-grow flex items-center justify-center">
+                    <p className="text-sm text-gray-700 text-center italic leading-relaxed flex-grow flex items-center justify-center">
                       "{testimonial.tekst}"
                     </p>
                     <div className="text-center mt-4">
-                      <p className="font-bold text-base text-gray-900">
+                      <p className="font-bold text-sm text-gray-900">
                         {testimonial.ime}
                       </p>
                     </div>
