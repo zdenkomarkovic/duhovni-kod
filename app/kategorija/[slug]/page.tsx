@@ -120,13 +120,18 @@ const portableTextComponents = {
     ),
   },
   types: {
-    image: ({ value }: any) => (
-      <img
-        src={urlFor(value).width(800).url()}
-        alt={value.alt || ""}
-        className="w-full h-auto rounded-lg my-4"
-      />
-    ),
+    image: ({ value }: any) => {
+      if (!value?.asset) {
+        return null;
+      }
+      return (
+        <img
+          src={urlFor(value).width(800).url()}
+          alt={value.alt || ""}
+          className="w-full h-auto rounded-lg my-4"
+        />
+      );
+    },
   },
 };
 
