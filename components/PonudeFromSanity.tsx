@@ -33,7 +33,7 @@ interface Ponuda {
 
 const ITEMS_PER_PAGE = 8;
 
-const ISTAKNUTE_PONUDE_QUERY = `*[_type == "ponuda" && (!defined(kategorije) || length(kategorije) == 0)] {
+const ISTAKNUTE_PONUDE_QUERY = `*[_type == "ponuda" && !defined(kategorije[0])] {
   _id,
   naziv,
   slug,
@@ -58,7 +58,7 @@ const ISTAKNUTE_PONUDE_QUERY = `*[_type == "ponuda" && (!defined(kategorije) || 
   }
 } | order(_createdAt desc)`;
 
-const ISTAKNUTE_COUNT_QUERY = `count(*[_type == "ponuda" && (!defined(kategorije) || length(kategorije) == 0)])`;
+const ISTAKNUTE_COUNT_QUERY = `count(*[_type == "ponuda" && !defined(kategorije[0])])`;
 
 export default function PonudeFromSanity() {
   const [allPonude, setAllPonude] = useState<Ponuda[]>([]);
@@ -74,7 +74,7 @@ export default function PonudeFromSanity() {
         setLoading(false);
         return;
       }
-      
+
       try {
         // Fetch total count
         const count = await client.fetch(ISTAKNUTE_COUNT_QUERY);
@@ -82,6 +82,12 @@ export default function PonudeFromSanity() {
 
         // Fetch all ponude
         const data = await client.fetch(ISTAKNUTE_PONUDE_QUERY);
+        console.log('=== DEBUG: Ponude bez kategorija ===');
+        console.log('Query:', ISTAKNUTE_PONUDE_QUERY);
+        console.log('Rezultati:', data);
+        data.forEach((ponuda: any) => {
+          console.log(`- ${ponuda.naziv}: kategorije =`, ponuda.kategorije);
+        });
         setAllPonude(data);
       } catch (error) {
         console.warn('Sanity not configured yet - using demo mode');

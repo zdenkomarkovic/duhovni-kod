@@ -98,20 +98,6 @@ export default function Navbar() {
               O Udruženju
             </Link>
 
-            <Link
-              href="/putovanja"
-              className="text-gray-700 hover:text-blue-600 transition-colors"
-            >
-              Odaberite putovanja
-            </Link>
-
-            <Link
-              href="/galerija"
-              className="text-gray-700 hover:text-blue-600 transition-colors"
-            >
-              Galerija
-            </Link>
-
             {/* Kategorije */}
             {!loading &&
               glavneKategorije.length > 0 &&
@@ -124,7 +110,12 @@ export default function Navbar() {
                   {kategorija.naziv}
                 </Link>
               ))}
-
+            <Link
+              href="/galerija"
+              className="text-gray-700 hover:text-blue-600 transition-colors"
+            >
+              Galerija
+            </Link>
             {/* Call Button */}
             <div>
               <a
