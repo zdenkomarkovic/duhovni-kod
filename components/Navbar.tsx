@@ -75,10 +75,10 @@ export default function Navbar() {
               src={logo}
               width={60}
               height={60}
-              alt="turisticka agencija"
+              alt="туристичка агенција"
             />
             <span className="text-2xl font-bold text-gray-900">
-              Duhovni Kod
+              Духовни Код
             </span>
           </Link>
 
@@ -88,14 +88,14 @@ export default function Navbar() {
               href="/"
               className="text-gray-700 hover:text-blue-600 transition-colors"
             >
-              Početna
+              Почетна
             </Link>
 
             <Link
               href="/o-udruzenju"
               className="text-gray-700 hover:text-blue-600 transition-colors"
             >
-              O Udruženju
+              О Удружењу
             </Link>
 
             {/* Kategorije */}
@@ -114,14 +114,14 @@ export default function Navbar() {
               href="/galerija"
               className="text-gray-700 hover:text-blue-600 transition-colors"
             >
-              Galerija
+              Галерија
             </Link>
             {/* Call Button */}
             <div>
               <a
                 href="tel:+381638815544"
                 className="flex px-3 items-center space-x-2 text-green-600 hover:text-green-700 transition-colors font-medium"
-                title="Pozovi nas"
+                title="Позови нас"
               >
                 <Phone className="w-4 h-4" />
                 <span>+38163 8815544</span>
@@ -129,7 +129,7 @@ export default function Navbar() {
             </div>
 
             <Button className="bg-blue-600 hover:bg-blue-700">
-              <Link href="/kontakt">Kontakt</Link>
+              <Link href="/kontakt">Контакт</Link>
             </Button>
           </div>
 
@@ -155,7 +155,7 @@ export default function Navbar() {
                 className="text-gray-700 hover:text-blue-600 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Početna
+                Почетна
               </Link>
 
               <Link
@@ -163,7 +163,7 @@ export default function Navbar() {
                 className="text-gray-700 hover:text-blue-600 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                O Udruženju
+                О Удружењу
               </Link>
 
               <Link
@@ -171,7 +171,7 @@ export default function Navbar() {
                 className="text-gray-700 hover:text-blue-600 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Odaberite putovanja
+                Одаберите путовања
               </Link>
 
               <Link
@@ -179,14 +179,14 @@ export default function Navbar() {
                 className="text-gray-700 hover:text-blue-600 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Galerija
+                Галерија
               </Link>
 
               {/* Mobile Kategorije */}
               {!loading && glavneKategorije.length > 0 && (
                 <>
                   <div className="text-sm font-semibold text-gray-500 uppercase tracking-wide">
-                    Kategorije
+                    Категорије
                   </div>
                   {glavneKategorije.map((kategorija) => (
                     <Link
@@ -215,7 +215,7 @@ export default function Navbar() {
                 className="bg-blue-600 hover:bg-blue-700 w-full"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <Link href="/kontakt">Kontakt</Link>
+                <Link href="/kontakt">Контакт</Link>
               </Button>
             </div>
           </div>

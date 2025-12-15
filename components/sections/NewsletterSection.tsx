@@ -42,10 +42,10 @@ export default function NewsletterSection() {
           setIsSubmitted(false);
         }, 5000);
       } else {
-        throw new Error("Greška pri prijavi");
+        throw new Error("Грешка при пријави");
       }
     } catch (error) {
-      setError("Došlo je do greške. Molimo pokušajte ponovo.");
+      setError("Дошло је до грешке. Молимо покушајте поново.");
     } finally {
       setIsSubmitting(false);
     }
@@ -59,11 +59,11 @@ export default function NewsletterSection() {
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 border border-white/20">
               <CheckCircle className="w-16 h-16 text-green-300 mx-auto mb-4" />
               <h2 className="text-2xl font-bold text-white mb-2">
-                Uspešno ste se prijavili!
+                Успешно сте се пријавили!
               </h2>
               <p className="text-blue-100">
-                Hvala vam! Uskoro ćete dobijati naše najnovije ponude za
-                putovanja.
+                Хвала вам! Ускоро ћете добијати наше најновије понуде за
+                путовања.
               </p>
             </div>
           </div>
@@ -71,18 +71,18 @@ export default function NewsletterSection() {
           <>
             <Mail className="w-16 h-16 text-blue-200 mx-auto mb-6" />
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Budite Informisani o Našim Putovanjima
+              Будите Информисани о Нашим Путовањима
             </h2>
             <p className="text-xl text-blue-100 mb-8">
-              Prijavite se za naš newsletter i prvi dobijajte ponude o našim
-              putovanjima
+              Пријавите се за наш њузлетер и први добијајте понуде о нашим
+              путовањима
             </p>
 
             <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
               <div className="flex flex-col sm:flex-row gap-4">
                 <Input
                   type="email"
-                  placeholder="Vaša email adresa"
+                  placeholder="Ваша емаил адреса"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -97,10 +97,10 @@ export default function NewsletterSection() {
                   {isSubmitting ? (
                     <>
                       <div className="w-4 h-4 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mr-2"></div>
-                      Šalje se...
+                      Шаље се...
                     </>
                   ) : (
-                    "Prijavite se"
+                    "Пријавите се"
                   )}
                 </Button>
               </div>
@@ -113,7 +113,7 @@ export default function NewsletterSection() {
             </form>
 
             <p className="text-blue-200 text-sm mt-4">
-              Poštujemo vašu privatnost. Možete se odjaviti u bilo kom trenutku.
+              Поштујемо вашу приватност. Можете се одјавити у било ком тренутку.
             </p>
           </>
         )}

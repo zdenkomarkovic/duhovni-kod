@@ -266,11 +266,11 @@ export default function KategorijaPage({
     return (
       <div className="min-h-screen bg-gray-50 pt-20 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Kategorija nije pronađena</h1>
+          <h1 className="text-2xl font-bold mb-4">Категорија није пронађена</h1>
           <Link href="/">
             <Button>
               <ArrowLeft className="w-4 h-4 mr-2" />
-              Nazad na početnu
+              Назад на почетну
             </Button>
           </Link>
         </div>
@@ -289,7 +289,7 @@ export default function KategorijaPage({
             className="inline-flex items-center text-blue-600 hover:text-blue-700 transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Nazad na početnu
+            Назад на почетну
           </Link>
         </div>
 
@@ -312,7 +312,7 @@ export default function KategorijaPage({
         {podkategorije.length > 0 && (
           <div className="mb-12">
             <h2 className="text-xl font-bold text-gray-900 mb-6">
-              Podkategorije
+              Подкатегорије
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
               {podkategorije.map((podkategorija) => (
@@ -374,11 +374,11 @@ export default function KategorijaPage({
 
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-xl font-bold text-gray-900">
-              Ponude {podkategorije.length > 0 ? `(${totalPonude})` : ""}
+              Понуде {podkategorije.length > 0 ? `(${totalPonude})` : ""}
             </h2>
             {totalPages > 1 && (
               <div className="text-sm text-gray-600">
-                Stranica {currentPage} od {totalPages}
+                Страница {currentPage} од {totalPages}
               </div>
             )}
           </div>
@@ -386,20 +386,20 @@ export default function KategorijaPage({
           {filteredPonude.length === 0 && selectedKlasifikacije.length > 0 ? (
             <div className="text-center py-12">
               <p className="text-gray-600 text-lg">
-                Nema ponuda sa odabranim klasifikacijama.
+                Нема понуда са одабраним класификацијама.
               </p>
               <Button
                 variant="outline"
                 onClick={() => setSelectedKlasifikacije([])}
                 className="mt-4"
               >
-                Obriši filtere
+                Обриши филтере
               </Button>
             </div>
           ) : filteredPonude.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-gray-600 text-lg">
-                Trenutno nema ponuda u ovoj kategoriji.
+                Тренутно нема понуда у овој категорији.
               </p>
             </div>
           ) : (
@@ -425,7 +425,7 @@ export default function KategorijaPage({
                     className="flex items-center px-2 md:px-4"
                   >
                     <ChevronLeft className="w-4 h-4 mr-1" />
-                    Prethodna
+                    Претходна
                   </Button>
 
                   <div className="flex space-x-1">
@@ -470,7 +470,7 @@ export default function KategorijaPage({
                     disabled={currentPage === totalPages}
                     className="flex items-center px-2 md:px-4"
                   >
-                    Sledeća
+                    Следећа
                     <ChevronRight className="w-4 h-4 ml-1" />
                   </Button>
                 </div>

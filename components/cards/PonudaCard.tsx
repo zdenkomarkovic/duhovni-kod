@@ -49,13 +49,13 @@ export default function PonudaCard({ ponuda }: PonudaCardProps) {
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-100 to-teal-100">
-            <span className="text-gray-400 text-sm">Slika se učitava...</span>
+            <span className="text-gray-400 text-sm">Слика се учитава...</span>
           </div>
         )}
         <div className="absolute top-4 right-4 flex gap-2">
           {ponuda.istaknuto && (
             <Badge className="bg-yellow-500 text-white hover:bg-yellow-600">
-              Istaknuto
+              Истакнуто
             </Badge>
           )}
           <Badge className="bg-white text-gray-900 hover:bg-white">
@@ -102,7 +102,7 @@ export default function PonudaCard({ ponuda }: PonudaCardProps) {
         
         <Link href={`/ponuda/${ponuda.slug.current}`} className="block w-full mt-auto">
           <Button className="w-full bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700">
-            Saznaj više
+            Сазнај више
           </Button>
         </Link>
       </CardContent>

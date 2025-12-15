@@ -8,7 +8,7 @@ import { useState } from 'react';
 const contactInfo = [
   {
     icon: <Phone className="w-6 h-6" />,
-    title: "Telefon",
+    title: "Телефон",
     details: ["+381 63 8815544"]
   },
   {
@@ -18,8 +18,8 @@ const contactInfo = [
   },
   {
     icon: <MapPin className="w-6 h-6" />,
-    title: "Adresa",
-    details: ["Jakšićeva 19", "Kruševac, Srbija"]
+    title: "Адреса",
+    details: ["Јакшићева 19", "Крушевац, Србија"]
   }
 ];
 
@@ -49,10 +49,10 @@ export default function ContactSection() {
           setIsSubmitted(false);
         }, 5000);
       } else {
-        throw new Error('Greška pri slanju poruke');
+        throw new Error('Грешка при слању поруке');
       }
     } catch (error) {
-      alert('Došlo je do greške. Molimo pokušajte ponovo.');
+      alert('Дошло је до грешке. Молимо покушајте поново.');
     } finally {
       setIsSubmitting(false);
     }
@@ -63,15 +63,15 @@ export default function ContactSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Kontaktirajte Nas
+            Контактирајте Нас
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Spremni smo da odgovorimo na sva vaša pitanja i pomoćemo vam da planirate savršenu pustolovinu
+            Спремни смо да одговоримо на сва ваша питања и помогнемо вам да планирате савршену пустоловину
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Info */}
+          {/* Контакт Инфо */}
           <div className="space-y-8">
             {contactInfo.map((info, index) => (
               <div key={index} className="flex items-start space-x-4">
@@ -88,54 +88,54 @@ export default function ContactSection() {
             ))}
           </div>
 
-          {/* Contact Form */}
+          {/* Контакт Форма */}
           <Card className="shadow-xl">
             <CardContent className="p-8">
               <h3 className="text-2xl font-semibold mb-6">
-                {isSubmitted ? 'Poruka je uspešno poslata!' : 'Pošaljite nam poruku'}
+                {isSubmitted ? 'Порука је успешно послата!' : 'Пошаљите нам поруку'}
               </h3>
               
               {isSubmitted && (
                 <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center">
                   <CheckCircle className="w-5 h-5 text-green-600 mr-3" />
                   <div>
-                    <p className="text-green-800 font-medium">Hvala vam na poruci!</p>
-                    <p className="text-green-700 text-sm">Kontaktiraćemo vas u najkraćem mogućem roku.</p>
+                    <p className="text-green-800 font-medium">Хвала вам на поруци!</p>
+                    <p className="text-green-700 text-sm">Контактираћемо вас у најкраћем могућем року.</p>
                   </div>
                 </div>
               )}
               
               <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Web3Forms access key */}
+                {/* Web3Forms приступни кључ */}
                 <input type="hidden" name="access_key" value={process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY} />
                 
-                {/* Honeypot spam protection */}
+                {/* Honeypot заштита од спама */}
                 <input type="checkbox" name="botcheck" className="hidden" style={{display: 'none'}} />
                 
-                {/* Redirect after submission */}
+                {/* Преусмери након слања */}
                 <input type="hidden" name="redirect" value="false" />
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="ime" className="block text-sm font-medium text-gray-700 mb-2">
-                      Ime *
+                      Име *
                     </label>
-                    <Input 
+                    <Input
                       id="ime"
                       name="ime"
-                      placeholder="Vaše ime" 
+                      placeholder="Ваше име" 
                       required
                       disabled={isSubmitting}
                     />
                   </div>
                   <div>
                     <label htmlFor="prezime" className="block text-sm font-medium text-gray-700 mb-2">
-                      Prezime *
+                      Презиме *
                     </label>
-                    <Input 
+                    <Input
                       id="prezime"
                       name="prezime"
-                      placeholder="Vaše prezime" 
+                      placeholder="Ваше презиме" 
                       required
                       disabled={isSubmitting}
                     />
@@ -144,13 +144,13 @@ export default function ContactSection() {
                 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    Email adresa *
+                    Емаил адреса *
                   </label>
-                  <Input 
+                  <Input
                     id="email"
                     name="email"
                     type="email"
-                    placeholder="vasa@email.com" 
+                    placeholder="ваша@емаил.цом" 
                     required
                     disabled={isSubmitting}
                   />
@@ -158,7 +158,7 @@ export default function ContactSection() {
                 
                 <div>
                   <label htmlFor="telefon" className="block text-sm font-medium text-gray-700 mb-2">
-                    Telefon
+                    Телефон
                   </label>
                   <Input 
                     id="telefon"
@@ -171,12 +171,12 @@ export default function ContactSection() {
                 
                 <div>
                   <label htmlFor="poruka" className="block text-sm font-medium text-gray-700 mb-2">
-                    Vaša poruka *
+                    Ваша порука *
                   </label>
-                  <Textarea 
+                  <Textarea
                     id="poruka"
                     name="message"
-                    placeholder="Opišite kako možemo da vam pomognemo..." 
+                    placeholder="Опишите како можемо да вам помогнемо..." 
                     rows={6}
                     required
                     disabled={isSubmitting}
@@ -191,12 +191,12 @@ export default function ContactSection() {
                   {isSubmitting ? (
                     <>
                       <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
-                      Šalje se...
+                      Шаље се...
                     </>
                   ) : (
                     <>
                       <Send className="w-5 h-5 mr-2" />
-                      Pošaljite poruku
+                      Пошаљите поруку
                     </>
                   )}
                 </Button>

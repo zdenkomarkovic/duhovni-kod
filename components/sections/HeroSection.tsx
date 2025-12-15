@@ -79,7 +79,7 @@ export default function HeroSection() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % heroImages.length);
-    }, 5000); // Menja sliku svakih 5 sekundi
+    }, 5000); // Мења слику сваких 5 секунди
 
     return () => clearInterval(interval);
   }, []);
@@ -103,7 +103,7 @@ export default function HeroSection() {
       id="home"
       className="relative h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Slider pozadina */}
+      {/* Слајдер позадина */}
       {heroImages.map((image, index) => (
         <div
           key={index}
@@ -125,11 +125,11 @@ export default function HeroSection() {
 
       <div className="absolute inset-0 bg-black/30" />
 
-      {/* Navigation arrows */}
+      {/* Навигациони дугмићи */}
       <button
         onClick={prevImage}
         className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all backdrop-blur-sm"
-        aria-label="Prethodna slika"
+        aria-label="Претходна слика"
       >
         <ChevronLeft className="w-6 h-6" />
       </button>
@@ -137,12 +137,12 @@ export default function HeroSection() {
       <button
         onClick={nextImage}
         className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all backdrop-blur-sm"
-        aria-label="Sledeća slika"
+        aria-label="Следећа слика"
       >
         <ChevronRight className="w-6 h-6" />
       </button>
 
-      {/* Sadržaj */}
+      {/* Садржај */}
       <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
         <h1 className="flex flex-col text-2xl md:text-6xl font-bold mb-6 animate-fade-in">
           Посетите
@@ -151,7 +151,7 @@ export default function HeroSection() {
           </span>
         </h1>
         <p className="text-lg md:text-2xl mb-8 text-gray-100 animate-fade-in-delay">
-          Yпознајте свој{" "}
+          Упознајте свој{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">
             духовни код
           </span>
@@ -171,7 +171,7 @@ export default function HeroSection() {
         </div> */}
       </div>
 
-      {/* Dots indikatori */}
+      {/* Индикатори */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
         {heroImages.map((_, index) => (
           <button
@@ -182,7 +182,7 @@ export default function HeroSection() {
                 ? "bg-white w-8"
                 : "bg-white/50 hover:bg-white/75"
             }`}
-            aria-label={`Idi na sliku ${index + 1}`}
+            aria-label={`Иди на слику ${index + 1}`}
           />
         ))}
       </div>

@@ -120,7 +120,7 @@ const portableTextComponents = {
         <div className="my-8">
           <img
             src={urlFor(value).width(800).height(600).url()}
-            alt={value.alt || "Slika"}
+            alt={value.alt || "Слика"}
             className="w-full rounded-lg shadow-lg"
             onError={(e) => {
               (e.target as HTMLImageElement).src = '/images/1 Манастир Дечани-min.jpg';
@@ -203,11 +203,11 @@ export default function PonudaPage({ params }: { params: { slug: string } }) {
     return (
       <div className="min-h-screen bg-gray-50 pt-20 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Ponuda nije pronađena</h1>
+          <h1 className="text-2xl font-bold mb-4">Понуда није пронађена</h1>
           <Link href="/">
             <Button>
               <ArrowLeft className="w-4 h-4 mr-2" />
-              Nazad na početnu
+              Назад на почетну
             </Button>
           </Link>
         </div>
@@ -226,7 +226,7 @@ export default function PonudaPage({ params }: { params: { slug: string } }) {
         {/* Dugme za štampanje */}
         <div className="mb-4 flex justify-end">
           <Button onClick={handlePrint} variant="outline">
-            🖨️ Štampaj ponudu
+            🖨️ Штампај понуду
           </Button>
         </div>
         {/* Print sekcija */}
@@ -238,7 +238,7 @@ export default function PonudaPage({ params }: { params: { slug: string } }) {
             className="inline-flex items-center text-blue-600 hover:text-blue-700 transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Nazad na destinacije
+            Назад на дестинације
           </Link>
         </div>
 
@@ -261,12 +261,12 @@ export default function PonudaPage({ params }: { params: { slug: string } }) {
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-100 to-teal-100">
-                  <span className="text-gray-400">Slika se učitava...</span>
+                  <span className="text-gray-400">Слика се учитава...</span>
                 </div>
               )}
               {ponuda.istaknuto && (
                 <div className="absolute top-4 left-4">
-                  <Badge className="bg-yellow-500 text-white">Istaknuto</Badge>
+                  <Badge className="bg-yellow-500 text-white">Истакнуто</Badge>
                 </div>
               )}
             </div>
@@ -408,7 +408,7 @@ export default function PonudaPage({ params }: { params: { slug: string } }) {
                       : "bg-red-100 text-red-800"
                   }`}
                 >
-                  {ponuda.dostupno ? "Dostupno" : "Nedostupno"}
+                  {ponuda.dostupno ? "Доступно" : "Недоступно"}
                 </div>
               </div>
             </div>
@@ -426,7 +426,7 @@ export default function PonudaPage({ params }: { params: { slug: string } }) {
                     {ponuda.cenaRSD.toLocaleString("sr-RS")} RSD
                   </div>
                 )}
-                <p className="text-gray-600">po osobi</p>
+                <p className="text-gray-600">по особи</p>
               </div>
             )}
 
@@ -445,7 +445,7 @@ export default function PonudaPage({ params }: { params: { slug: string } }) {
                   className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 flex items-center justify-center"
                 >
                   <Phone className="w-5 h-5 mr-2" />
-                  Pozovite nas - 063 8815544
+                  Позовите нас - 063 8815544
                 </Button>
               </a>
               <Button
@@ -465,23 +465,23 @@ export default function PonudaPage({ params }: { params: { slug: string } }) {
                       .catch(() => {
                         // Fallback to clipboard if share fails
                         navigator.clipboard.writeText(window.location.href);
-                        alert("Link je kopiran u clipboard!");
+                        alert("Линк је копиран у clipboard!");
                       });
                   } else {
                     navigator.clipboard.writeText(window.location.href);
-                    alert("Link je kopiran u clipboard!");
+                    alert("Линк је копиран у clipboard!");
                   }
                 }}
               >
                 <Share2 className="w-4 h-4 mr-2" />
-                Podeli
+                Подели
               </Button>
             </div>
 
             {/* Contact Info */}
             <Card>
               <CardContent className="p-6">
-                <h3 className="font-semibold mb-4">Kontaktirajte nas</h3>
+                <h3 className="font-semibold mb-4">Контактирајте нас</h3>
                 <div className="space-y-3">
                   <div className="flex items-center">
                     <Mail className="w-4 h-4 mr-3 text-blue-600" />
@@ -502,7 +502,7 @@ export default function PonudaPage({ params }: { params: { slug: string } }) {
         {ponuda.detaljniOpis && ponuda.detaljniOpis.length > 0 && (
           <Card className="mb-12">
             <CardContent className="p-8">
-              <h2 className="text-2xl font-bold mb-6">Detaljan opis</h2>
+              <h2 className="text-2xl font-bold mb-6">Детаљан опис</h2>
               <div className="prose max-w-none">
                 <PortableText
                   value={ponuda.detaljniOpis}
@@ -519,7 +519,7 @@ export default function PonudaPage({ params }: { params: { slug: string } }) {
           ponuda.ukluceno.some((item) => item && item.trim() !== "") && (
             <Card className="mb-12">
               <CardContent className="p-8">
-                <h2 className="text-2xl font-bold mb-6">Šta je uključeno</h2>
+                <h2 className="text-2xl font-bold mb-6">Шта је укључено</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {ponuda.ukluceno
                     .filter((item) => item && item.trim() !== "")
@@ -576,7 +576,7 @@ export default function PonudaPage({ params }: { params: { slug: string } }) {
                                   >
                                     {celija.sadrzaj || (
                                       <span className="text-gray-400 italic">
-                                        Nije uneto
+                                        Није унето
                                       </span>
                                     )}
                                   </td>
@@ -591,7 +591,7 @@ export default function PonudaPage({ params }: { params: { slug: string } }) {
                 {ponuda.napomeneTabele && ponuda.napomeneTabele.length > 0 && (
                   <div className="mt-6 p-6 bg-gray-50 rounded-lg">
                     <h4 className="font-semibold text-gray-900 mb-3">
-                      Napomene:
+                      Напомене:
                     </h4>
                     <div className="prose prose-sm max-w-none text-gray-700">
                       <PortableText

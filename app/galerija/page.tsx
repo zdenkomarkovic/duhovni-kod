@@ -87,7 +87,7 @@ export default function GalerijaPage() {
 
     setSelectedImage({
       url: urlFor(slika).width(1200).height(900).url(),
-      alt: slika.alt || "Galerija slika",
+      alt: slika.alt || "Галерија слика",
       caption: slika.caption,
       slikaIndex,
     });
@@ -141,11 +141,11 @@ export default function GalerijaPage() {
           {/* Header */}
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Galerija
+              Галерија
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Pogledajte najlepše trenutke sa naših putovanja na Kosovo i
-              Metohiju
+              Погледајте најлепше тренутке са наших путовања на Косово и
+              Метохију
             </p>
             <div className="w-24 h-1 bg-blue-600 mx-auto mt-6"></div>
           </div>
@@ -156,7 +156,7 @@ export default function GalerijaPage() {
               {galerije.length === 0 ? (
                 <div className="text-center py-12">
                   <p className="text-gray-500 text-lg">
-                    Nema galerija za prikaz.
+                    Нема галерија за приказ.
                   </p>
                 </div>
               ) : (
@@ -197,7 +197,7 @@ export default function GalerijaPage() {
                           {/* Badge sa brojem slika */}
                           <div className="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
                             {validSlike.length}{" "}
-                            {validSlike.length === 1 ? "slika" : "slika"}
+                            {validSlike.length === 1 ? "слика" : "слика"}
                           </div>
 
                           {/* Naziv galerije na dnu slike */}
@@ -228,7 +228,7 @@ export default function GalerijaPage() {
                   className="mb-6"
                 >
                   <ArrowLeft className="w-4 h-4 mr-2" />
-                  Nazad na sve galerije
+                  Назад на све галерије
                 </Button>
 
                 <h2 className="text-3xl font-bold text-gray-900 mb-2">

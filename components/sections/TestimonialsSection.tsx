@@ -17,7 +17,7 @@ export default function TestimonialsSection() {
         const data = await client.fetch(UTISCI_QUERY);
         setTestimonials(data);
       } catch (error) {
-        console.error("Greška pri učitavanju utisaka:", error);
+        console.error("Грешка при учитавању утисака:", error);
       } finally {
         setLoading(false);
       }
@@ -31,7 +31,7 @@ export default function TestimonialsSection() {
 
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % testimonials.length);
-    }, 6000); // Menja slider svakih 6 sekundi
+    }, 6000); // Мења слајдер сваких 6 секунди
 
     return () => clearInterval(interval);
   }, [testimonials.length]);
@@ -54,14 +54,14 @@ export default function TestimonialsSection() {
     return (
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-gray-600">Učitavanje utisaka...</p>
+          <p className="text-gray-600">Учитавање утисака...</p>
         </div>
       </section>
     );
   }
 
   if (testimonials.length === 0) {
-    return null; // Ne prikazuj sekciju ako nema utisaka
+    return null; // Не приказуј секцију ако нема утисака
   }
 
   const getPrevIndex = (index: number) =>
@@ -73,7 +73,7 @@ export default function TestimonialsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Utisci putnika
+            Утисци путника
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Погледајте неке од утисака наших путника
@@ -81,7 +81,7 @@ export default function TestimonialsSection() {
         </div>
 
         <div className="relative">
-          {/* Mobilni prikaz - samo centralna kartica */}
+          {/* Мобилни приказ - само централна картица */}
           <div className="md:hidden">
             <div className="relative grid px-4">
               {testimonials.map((testimonial, idx) => (
@@ -116,9 +116,9 @@ export default function TestimonialsSection() {
             </div>
           </div>
 
-          {/* Desktop prikaz - tri kartice */}
+          {/* Десктоп приказ - три картице */}
           <div className="hidden md:grid md:grid-cols-[1fr_1.5fr_1fr] items-stretch gap-4 px-8">
-            {/* Leva kolona */}
+            {/* Лева колона */}
             <div
               className="relative grid opacity-40 hover:opacity-60 transition-opacity cursor-pointer overflow-hidden h-full"
               onClick={prevSlide}
@@ -155,7 +155,7 @@ export default function TestimonialsSection() {
               ))}
             </div>
 
-            {/* Centralna kolona */}
+            {/* Централна колона */}
             <div className="relative grid h-full">
               {testimonials.map((testimonial, idx) => (
                 <Card
@@ -188,7 +188,7 @@ export default function TestimonialsSection() {
               ))}
             </div>
 
-            {/* Desna kolona */}
+            {/* Десна колона */}
             <div
               className="relative grid opacity-40 hover:opacity-60 transition-opacity cursor-pointer overflow-hidden h-full"
               onClick={nextSlide}
@@ -226,13 +226,13 @@ export default function TestimonialsSection() {
             </div>
           </div>
 
-          {/* Navigation arrows - samo ako ima više od 1 utiska */}
+          {/* Навигациони дугмићи - само ако има више од 1 утиска */}
           {testimonials.length > 1 && (
             <>
               <button
                 onClick={prevSlide}
                 className="absolute left-0 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-50 text-gray-800 p-3 rounded-full shadow-lg transition-all hover:scale-110 z-10"
-                aria-label="Prethodni utisak"
+                aria-label="Претходни утисак"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
@@ -240,12 +240,12 @@ export default function TestimonialsSection() {
               <button
                 onClick={nextSlide}
                 className="absolute right-0 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-50 text-gray-800 p-3 rounded-full shadow-lg transition-all hover:scale-110 z-10"
-                aria-label="Sledeći utisak"
+                aria-label="Следећи утисак"
               >
                 <ChevronRight className="w-6 h-6" />
               </button>
 
-              {/* Dots indikatori */}
+              {/* Индикатори */}
               <div className="flex justify-center gap-2 mt-8">
                 {testimonials.map((_, index) => (
                   <button
@@ -256,7 +256,7 @@ export default function TestimonialsSection() {
                         ? "bg-blue-600 w-8"
                         : "bg-gray-300 w-3 hover:bg-gray-400"
                     }`}
-                    aria-label={`Idi na utisak ${index + 1}`}
+                    aria-label={`Иди на утисак ${index + 1}`}
                   />
                 ))}
               </div>

@@ -3,13 +3,13 @@ import { Church, Users, Heart, BookOpen } from "lucide-react";
 const features = [
   {
     icon: <Church className="w-6 h-6" />,
-    title: "Poseta svetinjama",
+    title: "Посета светињама",
     description:
       "Највеће светиње Косова и Метохије, Старог Раса и Моравске Србије",
   },
   {
     icon: <Users className="w-6 h-6" />,
-    title: "Stručno vođenje",
+    title: "Стручно вођење",
     description:
       "Искусни лиценцирани водичи вашем путовању дају нову димензију",
   },
@@ -33,10 +33,10 @@ export default function FeaturesSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Zašto baš mi?
+            Зашто баш ми?
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Otkrijte šta nas čini posebnim u organizaciji duhovnih putovanja
+            Откријте шта нас чини посебним у организацији духовних путовања
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

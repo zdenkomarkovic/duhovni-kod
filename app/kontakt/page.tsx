@@ -13,7 +13,7 @@ import Link from "next/link";
 const contactInfo = [
   {
     icon: <Phone className="w-6 h-6" />,
-    title: "Telefon",
+    title: "Телефон",
     details: ["+38163 8815544"],
     href: "tel:+381638815544",
   },
@@ -51,10 +51,10 @@ export default function KontaktPage() {
           setIsSubmitted(false);
         }, 5000);
       } else {
-        throw new Error("Greška pri slanju poruke");
+        throw new Error("Грешка при слању поруке");
       }
     } catch (error) {
-      alert("Došlo je do greške. Molimo pokušajte ponovo.");
+      alert("Дошло је до грешке. Молимо покушајте поново.");
     } finally {
       setIsSubmitting(false);
     }
@@ -64,7 +64,7 @@ export default function KontaktPage() {
     <div className="min-h-screen bg-gray-50">
       <Navbar />
 
-      {/* Hero sekcija */}
+      {/* Херо секција */}
       <section className="pt-20 pb-16 bg-gradient-to-r from-blue-600 to-teal-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center text-white">
@@ -73,30 +73,30 @@ export default function KontaktPage() {
               className="inline-flex items-center text-blue-100 hover:text-white transition-colors mb-6"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
-              Nazad na početnu
+              Назад на почетну
             </Link>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Kontaktirajte Nas
+              Контактирајте Нас
             </h1>
             <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              Spremni smo da odgovorimo na sva vaša pitanja i pomoćićemo vam da
-              isplanirate savršeno putovanje
+              Спремни смо да одговоримо на сва ваша питања и помоћићемо вам да
+              испланирате савршено путовање
             </p>
           </div>
         </div>
       </section>
 
-      {/* Kontakt informacije */}
+      {/* Контакт информације */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Kontakt forma */}
+            {/* Контакт форма */}
             <Card className="shadow-xl">
               <CardContent className="p-8">
                 <h2 className="text-2xl font-bold mb-6 text-gray-900">
                   {isSubmitted
-                    ? "Poruka je uspešno poslata!"
-                    : "Pošaljite nam poruku"}
+                    ? "Порука је успешно послата!"
+                    : "Пошаљите нам поруку"}
                 </h2>
 
                 {isSubmitted && (
@@ -104,10 +104,10 @@ export default function KontaktPage() {
                     <CheckCircle className="w-5 h-5 text-green-600 mr-3" />
                     <div>
                       <p className="text-green-800 font-medium">
-                        Hvala vam na poruci!
+                        Хвала вам на поруци!
                       </p>
                       <p className="text-green-700 text-sm">
-                        Kontaktiraćemo vas u najkraćem mogućem roku.
+                        Контактираћемо вас у најкраћем могућем року.
                       </p>
                     </div>
                   </div>
@@ -138,12 +138,12 @@ export default function KontaktPage() {
                         htmlFor="ime"
                         className="block text-sm font-medium text-gray-700 mb-2"
                       >
-                        Ime *
+                        Име *
                       </label>
                       <Input
                         id="ime"
                         name="ime"
-                        placeholder="Vaše ime"
+                        placeholder="Ваше име"
                         required
                         disabled={isSubmitting}
                       />
@@ -153,12 +153,12 @@ export default function KontaktPage() {
                         htmlFor="prezime"
                         className="block text-sm font-medium text-gray-700 mb-2"
                       >
-                        Prezime *
+                        Презиме *
                       </label>
                       <Input
                         id="prezime"
                         name="prezime"
-                        placeholder="Vaše prezime"
+                        placeholder="Ваше презиме"
                         required
                         disabled={isSubmitting}
                       />
@@ -170,13 +170,13 @@ export default function KontaktPage() {
                       htmlFor="email"
                       className="block text-sm font-medium text-gray-700 mb-2"
                     >
-                      Email adresa *
+                      Емаил адреса *
                     </label>
                     <Input
                       id="email"
                       name="email"
                       type="email"
-                      placeholder="vasa@email.com"
+                      placeholder="ваша@емаил.цом"
                       required
                       disabled={isSubmitting}
                     />
@@ -187,7 +187,7 @@ export default function KontaktPage() {
                       htmlFor="telefon"
                       className="block text-sm font-medium text-gray-700 mb-2"
                     >
-                      Telefon
+                      Телефон
                     </label>
                     <Input
                       id="telefon"
@@ -203,12 +203,12 @@ export default function KontaktPage() {
                       htmlFor="poruka"
                       className="block text-sm font-medium text-gray-700 mb-2"
                     >
-                      Vaša poruka *
+                      Ваша порука *
                     </label>
                     <Textarea
                       id="poruka"
                       name="message"
-                      placeholder="Opišite kako možemo da vam pomognemo..."
+                      placeholder="Опишите како можемо да вам помогнемо..."
                       rows={6}
                       required
                       disabled={isSubmitting}
@@ -223,12 +223,12 @@ export default function KontaktPage() {
                     {isSubmitting ? (
                       <>
                         <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
-                        Šalje se...
+                        Шаље се...
                       </>
                     ) : (
                       <>
                         <Send className="w-5 h-5 mr-2" />
-                        Pošaljite poruku
+                        Пошаљите поруку
                       </>
                     )}
                   </Button>
@@ -236,7 +236,7 @@ export default function KontaktPage() {
               </CardContent>
             </Card>
 
-            {/* Mapa i dodatne informacije */}
+            {/* Мапа и додатне информације */}
             <div className="space-y-8">
               <div className="grid  gap-8 mb-16">
                 {contactInfo.map((info, index) => (

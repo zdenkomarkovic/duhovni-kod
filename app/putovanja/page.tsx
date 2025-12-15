@@ -11,10 +11,10 @@ export default function PutovanjaPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Odaberite putovanja
+              Одаберите путовања
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Pogledajte sva dostupna putovanja
+              Погледајте сва доступна путовања
             </p>
             <div className="w-24 h-1 bg-blue-600 mx-auto mt-6"></div>
           </div>

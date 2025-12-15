@@ -143,11 +143,11 @@ export default function PonudeBezKategorije() {
   if (allPonude.length === 0) {
     return (
       <div className="text-center py-12">
-        <h3 className="text-2xl font-semibold mb-4">Nema dostupnih putovanja</h3>
+        <h3 className="text-2xl font-semibold mb-4">Нема доступних путовања</h3>
         <p className="text-gray-600 mb-6">
           {projectId === 'your-project-id-here' || !projectId || projectId.length < 5
-            ? 'Kreirajte Sanity projekat i dodajte Project ID u .env.local fajl.'
-            : 'Trenutno nema ponuda koje nisu zavedene pod kategorije.'
+            ? 'Креирајте Sanity пројекат и додајте Project ID у .env.local фајл.'
+            : 'Тренутно нема понуда које нису заведене под категорије.'
           }
         </p>
       </div>
@@ -168,7 +168,7 @@ export default function PonudeBezKategorije() {
         <div className="flex flex-col items-center space-y-4">
           {/* Page Info */}
           <div className="text-sm text-gray-600">
-            Stranica {currentPage} od {totalPages} • Ukupno {totalCount} {totalCount === 1 ? 'ponuda' : totalCount >= 2 && totalCount <= 4 ? 'ponude' : 'ponuda'}
+            Страница {currentPage} од {totalPages} • Укупно {totalCount} {totalCount === 1 ? 'понуда' : totalCount >= 2 && totalCount <= 4 ? 'понуде' : 'понуда'}
           </div>
 
           {/* Pagination Controls */}
@@ -180,7 +180,7 @@ export default function PonudeBezKategorije() {
               className="flex items-center px-2 md:px-4"
             >
               <ChevronLeft className="w-4 h-4 mr-1" />
-              Prethodna
+              Претходна
             </Button>
 
             <div className="flex space-x-1">
@@ -216,7 +216,7 @@ export default function PonudeBezKategorije() {
               disabled={currentPage === totalPages}
               className="flex items-center px-2 md:px-4"
             >
-              Sledeća
+              Следећа
               <ChevronRight className="w-4 h-4 ml-1" />
             </Button>
           </div>
