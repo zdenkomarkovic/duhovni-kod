@@ -6,15 +6,15 @@ import Image from "next/image";
 
 const heroImages = [
   {
-    src: "/images/1 Манастир Дечани-min.jpg",
+    src: "/images/IMG_20250928_074339-min.jpg",
     alt: "Манастир Дечани",
     title: "Манастир Дечани",
   },
-  {
-    src: "/images/2 Манастир Дечани улаз-min.jpg",
-    alt: "Манастир Дечани улаз",
-    title: "Манастир Дечани улаз",
-  },
+  // {
+  //   src: "/images/2 Манастир Дечани улаз-min.jpg",
+  //   alt: "Манастир Дечани улаз",
+  //   title: "Манастир Дечани улаз",
+  // },
   {
     src: "/images/3 Манастир Грачаница-min.jpg",
     alt: "Манастир Грачаница",
@@ -30,42 +30,38 @@ const heroImages = [
     alt: "Свети Архангели",
     title: "Свети Архангели",
   },
-  {
-    src: "/images/7 Пећка патријаршија-min.jpg",
-    alt: "Пећка патријаршија",
-    title: "Пећка патријаршија",
-  },
+  // {
+  //   src: "/images/7 Пећка патријаршија-min.jpg",
+  //   alt: "Пећка патријаршија",
+  //   title: "Пећка патријаршија",
+  // },
   {
     src: "/images/8 Пећка припрата-min.jpg",
     alt: "Пећка припрата",
     title: "Пећка припрата",
   },
-  { src: "/images/9 Призрен-min.jpg", alt: "Призрен", title: "Призрен" },
-  {
-    src: "/images/10 Богородица Љевишка-min.jpg",
-    alt: "Богородица Љевишка",
-    title: "Богородица Љевишка",
-  },
+  // { src: "/images/9 Призрен-min.jpg", alt: "Призрен", title: "Призрен" },
+  // {
+  //   src: "/images/10 Богородица Љевишка-min.jpg",
+  //   alt: "Богородица Љевишка",
+  //   title: "Богородица Љевишка",
+  // },
   {
     src: "/images/11 Црква св Ђорђа Призрен-min.jpg",
     alt: "Црква св Ђорђа Призрен",
     title: "Црква св Ђорђа Призрен",
   },
-  {
-    src: "/images/12 Виница цара Душана-min.jpg",
-    alt: "Виница цара Душана",
-    title: "Виница цара Душана",
-  },
+  // {
+  //   src: "/images/12 Виница цара Душана-min.jpg",
+  //   alt: "Виница цара Душана",
+  //   title: "Виница цара Душана",
+  // },
   {
     src: "/images/13 Црква св Стефана Велика Хоча-min.jpg",
     alt: "Црква св Стефана Велика Хоča",
     title: "Црква св Стефана Велика Хоча",
   },
-  {
-    src: "/images/14 Музеј вина Велика Хоча-min.jpg",
-    alt: "Музеј вина Велика Хоча",
-    title: "Музеј вина Велика Хоча",
-  },
+
   {
     src: "/images/15 Споменик на Косову пољу-min.jpg",
     alt: "Споменик на Косову пољу",
@@ -99,10 +95,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section
-      id="home"
-      className="relative h-screen flex items-center justify-center overflow-hidden"
-    >
+    <section id="home" className="relative h-screen  overflow-hidden">
       {/* Слајдер позадина */}
       {heroImages.map((image, index) => (
         <div
@@ -143,20 +136,10 @@ export default function HeroSection() {
       </button>
 
       {/* Садржај */}
-      <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
-        <h1 className="flex flex-col text-2xl md:text-6xl font-bold mb-6 animate-fade-in">
-          Посетите
-          <span className="pb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">
-            Косову и Метохијy.
-          </span>
+      <div className="relative flex items-end h-full z-10 text-left text-white max-w-7xl px-4 mt-auto mx-auto">
+        <h1 className="text-2xl md:text-5xl mt-20 font-bold mb-16 animate-fade-in max-w-4xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 ">
+          Посетите Косовo и Метохијy, yпознајте свој духовни код{" "}
         </h1>
-        <p className="text-lg md:text-2xl mb-8 text-gray-100 animate-fade-in-delay">
-          Упознајте свој{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">
-            духовни код
-          </span>
-          !
-        </p>
 
         {/* <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-delay-2">
           <a href="#destinations">

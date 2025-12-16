@@ -294,7 +294,7 @@ export default function KategorijaPage({
         </div>
 
         {/* Category Header */}
-        <div className="mb-12">
+        {/* <div className="mb-12">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             {kategorija.naziv}
           </h1>
@@ -306,10 +306,10 @@ export default function KategorijaPage({
               />
             </div>
           )}
-        </div>
+        </div> */}
 
         {/* Podkategorije */}
-        {podkategorije.length > 0 && (
+        {/* {podkategorije.length > 0 && (
           <div className="mb-12">
             <h2 className="text-xl font-bold text-gray-900 mb-6">
               Подкатегорије
@@ -321,7 +321,7 @@ export default function KategorijaPage({
                   href={`/kategorija/${podkategorija.slug.current}`}
                 >
                   <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer h-full overflow-hidden">
-                    {/* Slika */}
+              
                     <div className="relative h-48 overflow-hidden">
                       {podkategorija.slika ? (
                         <img
@@ -352,7 +352,7 @@ export default function KategorijaPage({
                       </div>
                     </div>
 
-                    {/* Naslov */}
+                 
                     <CardContent className="p-6 flex-1 flex items-center justify-center">
                       <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors text-center">
                         {podkategorija.naziv}
@@ -363,7 +363,7 @@ export default function KategorijaPage({
               ))}
             </div>
           </div>
-        )}
+        )} */}
 
         {/* Ponude */}
         <div className="mb-12">
@@ -373,9 +373,9 @@ export default function KategorijaPage({
           />
 
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-bold text-gray-900">
+            {/* <h2 className="text-xl font-bold text-gray-900">
               Понуде {podkategorije.length > 0 ? `(${totalPonude})` : ""}
-            </h2>
+            </h2> */}
             {totalPages > 1 && (
               <div className="text-sm text-gray-600">
                 Страница {currentPage} од {totalPages}
