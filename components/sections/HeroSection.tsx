@@ -158,9 +158,9 @@ export default function HeroSection() {
       </button>
 
       {/* Садржај */}
-      <div className="relative flex items-end h-full z-10 text-left text-white max-w-7xl px-4 mt-auto mx-auto">
-        <h1 className="text-2xl md:text-4xl mt-20 font-bold mb-16 animate-fade-in  text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 ">
-          Одаберите путовање по жељи, yпознајте свој духовни код{" "}
+      <div className="relative flex items-end h-full z-10  text-white max-w-7xl px-4 mt-auto mx-auto">
+        <h1 className="text-2xl md:text-4xl mx-auto mt-20 font-bold mb-16 animate-fade-in  text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 ">
+          Одаберите путовање по жељи, yпознајте свој духовни код!
         </h1>
 
         {/* <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-delay-2">
