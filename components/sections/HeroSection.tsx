@@ -62,11 +62,11 @@ const heroImages = [
   //   title: "Црква св Стефана Велика Хоча",
   // },
 
-  {
-    src: "/images/15 Споменик на Косову пољу-min.jpg",
-    alt: "Споменик на Косову пољу",
-    title: "Споменик на Косову пољу",
-  },
+  // {
+  //   src: "/images/15 Споменик на Косову пољу-min.jpg",
+  //   alt: "Споменик на Косову пољу",
+  //   title: "Споменик на Косову пољу",
+  // },
   {
     src: "/images/IMG-20250505-WA0004.jpg",
     alt: "Kosovo i Metohija",
@@ -129,7 +129,9 @@ export default function HeroSection() {
             alt={image.alt}
             title={image.title}
             fill
-            className="object-cover"
+            className={`object-cover ${
+              index === heroImages.length - 4 ? "object-[center_100%]" : ""
+            } ${index === heroImages.length - 2 ? "object-[center_70%]" : ""} ${index === 0 ? "object-[center_70%]" : ""}`}
             priority={index === 0}
             quality={90}
           />
@@ -157,8 +159,8 @@ export default function HeroSection() {
 
       {/* Садржај */}
       <div className="relative flex items-end h-full z-10 text-left text-white max-w-7xl px-4 mt-auto mx-auto">
-        <h1 className="text-2xl md:text-5xl mt-20 font-bold mb-16 animate-fade-in max-w-4xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 ">
-          Посетите Косовo и Метохијy, yпознајте свој духовни код{" "}
+        <h1 className="text-2xl md:text-4xl mt-20 font-bold mb-16 animate-fade-in  text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 ">
+          Одаберите путовање по жељи, yпознајте свој духовни код{" "}
         </h1>
 
         {/* <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-delay-2">
