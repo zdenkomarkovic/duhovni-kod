@@ -78,7 +78,7 @@ export default function Navbar() {
               alt="туристичка агенција"
             />
             <span className="text-2xl font-bold text-gray-900">
-              Духовни Код
+              Духовни kод
             </span>
           </Link>
 

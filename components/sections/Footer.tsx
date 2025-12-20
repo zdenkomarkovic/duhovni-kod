@@ -89,7 +89,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mx-auto">
           {/* Brand */}
           <div className=" text-center mx-auto">
-            <p className="text-2xl font-bold">Духовни Код</p>
+            <p className="text-2xl font-bold">Духовни kод</p>
 
             <Image
               src={logo}
@@ -173,7 +173,7 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col md:flex-row justify-center border-t border-gray-400 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2025 Духовни Код. Сва права задржана.</p>
+          <p>&copy; 2025 Духовни kод. Сва права задржана.</p>
           <a href="https://www.manikamwebsolutions.com/" target="_blank">
             израда сајта:{" "}
             <span className="font-bold text-white hover:text-gray-400 transition-colors">

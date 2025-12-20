@@ -14,7 +14,7 @@ export default function OUdruzenјuPage() {
           {/* Херо секција */}
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              О Удружењу Духовни Код
+              О Удружењу Духовни kод
             </h1>
             <div className="w-24 h-1 bg-blue-600 mx-auto mb-8"></div>
           </div>
@@ -37,8 +37,8 @@ export default function OUdruzenјuPage() {
                 </p>
 
                 <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                  Проверите зашто се наша путовања разликују од других, зашто
-                  се путници враћају и препоручују нас.
+                  Проверите зашто се наша путовања разликују од других, зашто се
+                  путници враћају и препоручују нас.
                 </p>
 
                 {/* Истакнута порука */}
@@ -70,9 +70,8 @@ export default function OUdruzenјuPage() {
                       Духовно надахнуће
                     </h3>
                     <p className="text-gray-700">
-                      Свако путовање је прилика за духовно освежење и
-                      повезивање са нашим коренима кроз посете манастирима и
-                      светињама.
+                      Свако путовање је прилика за духовно освежење и повезивање
+                      са нашим коренима кроз посете манастирима и светињама.
                     </p>
                   </div>
                 </div>

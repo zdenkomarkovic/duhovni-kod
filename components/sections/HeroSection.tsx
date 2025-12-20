@@ -15,11 +15,11 @@ const heroImages = [
   //   alt: "Манастир Дечани улаз",
   //   title: "Манастир Дечани улаз",
   // },
-  {
-    src: "/images/3 Манастир Грачаница-min.jpg",
-    alt: "Манастир Грачаница",
-    title: "Манастир Грачаница",
-  },
+  // {
+  //   src: "/images/3 Манастир Грачаница-min.jpg",
+  //   alt: "Манастир Грачаница",
+  //   title: "Манастир Грачаница",
+  // },
   {
     src: "/images/5 Свети Архангели улаз-min.jpg",
     alt: "Свети Архангели улаз",
@@ -35,11 +35,11 @@ const heroImages = [
   //   alt: "Пећка патријаршија",
   //   title: "Пећка патријаршија",
   // },
-  {
-    src: "/images/8 Пећка припрата-min.jpg",
-    alt: "Пећка припрата",
-    title: "Пећка припрата",
-  },
+  // {
+  //   src: "/images/8 Пећка припрата-min.jpg",
+  //   alt: "Пећка припрата",
+  //   title: "Пећка припрата",
+  // },
   // { src: "/images/9 Призрен-min.jpg", alt: "Призрен", title: "Призрен" },
   // {
   //   src: "/images/10 Богородица Љевишка-min.jpg",
@@ -66,6 +66,26 @@ const heroImages = [
     src: "/images/15 Споменик на Косову пољу-min.jpg",
     alt: "Споменик на Косову пољу",
     title: "Споменик на Косову пољу",
+  },
+  {
+    src: "/images/IMG-20250505-WA0004.jpg",
+    alt: "Kosovo i Metohija",
+    title: "Kosovo i Metohija",
+  },
+  {
+    src: "/images/IMG_20250427_125710-min.jpg",
+    alt: "Kosovo i Metohija",
+    title: "Kosovo i Metohija",
+  },
+  {
+    src: "/images/IMG_20250927_101149-min.jpg",
+    alt: "Kosovo i Metohija",
+    title: "Kosovo i Metohija",
+  },
+  {
+    src: "/images/IMG_20250426_073230-min.jpg",
+    alt: "Kosovo i Metohija",
+    title: "Kosovo i Metohija",
   },
 ];
 
