@@ -43,6 +43,7 @@ const ISTAKNUTE_PONUDE_QUERY = `*[_type == "ponuda" && istaknuto == true] {
   cenaRSD,
   ocena,
   istaknuto,
+  redosled,
   kategorije[]-> {
     naziv,
     slug,
@@ -56,7 +57,7 @@ const ISTAKNUTE_PONUDE_QUERY = `*[_type == "ponuda" && istaknuto == true] {
     _id,
     naziv
   }
-} | order(_createdAt desc)`;
+} | order(coalesce(redosled, 100) asc, _createdAt desc)`;
 
 const ISTAKNUTE_COUNT_QUERY = `count(*[_type == "ponuda" && istaknuto == true])`;
 

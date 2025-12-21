@@ -95,6 +95,13 @@ export const ponuda = defineType({
       initialValue: false,
     }),
     defineField({
+      name: "redosled",
+      title: "Redosled Prikaza (za istaknute)",
+      type: "number",
+      description: "Broj za sortiranje istaknuti ponuda (manji broj = viši u listi)",
+      initialValue: 100,
+    }),
+    defineField({
       name: "ukluceno",
       title: "Šta je Uključeno",
       type: "array",
@@ -158,4 +165,24 @@ export const ponuda = defineType({
       };
     },
   },
+  orderings: [
+    {
+      title: "Redosled Istaknuti",
+      name: "redosledIstaknuti",
+      by: [
+        { field: "redosled", direction: "asc" },
+        { field: "naziv", direction: "asc" },
+      ],
+    },
+    {
+      title: "Datum Kreiranja (Najnovije)",
+      name: "datumDesc",
+      by: [{ field: "datumKreiranja", direction: "desc" }],
+    },
+    {
+      title: "Naziv A-Z",
+      name: "nazivAsc",
+      by: [{ field: "naziv", direction: "asc" }],
+    },
+  ],
 });
