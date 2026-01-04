@@ -3,70 +3,49 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { client, projectId, urlFor } from "@/lib/sanity";
 
-const heroImages = [
+interface HeroImage {
+  src: string;
+  alt: string;
+  title: string;
+  objectPosition?: string;
+}
+
+interface HeroSlider {
+  _id: string;
+  naziv: string;
+  aktivan: boolean;
+  slike: Array<{
+    slika: any;
+    objectPosition?: string;
+  }>;
+  intervalRotacije: number;
+}
+
+// Default images kao fallback
+const defaultHeroImages: HeroImage[] = [
   {
     src: "/images/IMG_20250928_074339-min.jpg",
     alt: "Манастир Дечани",
     title: "Манастир Дечани",
+    objectPosition: "center 70%",
   },
-  // {
-  //   src: "/images/2 Манастир Дечани улаз-min.jpg",
-  //   alt: "Манастир Дечани улаз",
-  //   title: "Манастир Дечани улаз",
-  // },
   {
     src: "/images/3 Манастир Грачаница-min.jpg",
     alt: "Манастир Грачаница",
     title: "Манастир Грачаница",
   },
-  // {
-  //   src: "/images/5 Свети Архангели улаз-min.jpg",
-  //   alt: "Свети Архангели улаз",
-  //   title: "Свети Архангели улаз",
-  // },
   {
     src: "/images/6 Свети Архангели-min.jpg",
     alt: "Свети Архангели",
     title: "Свети Архангели",
   },
-  // {
-  //   src: "/images/7 Пећка патријаршија-min.jpg",
-  //   alt: "Пећка патријаршија",
-  //   title: "Пећка патријаршија",
-  // },
   {
     src: "/images/8 Пећка припрата-min.jpg",
     alt: "Пећка припрата",
     title: "Пећка припрата",
   },
-  // { src: "/images/9 Призрен-min.jpg", alt: "Призрен", title: "Призрен" },
-  // {
-  //   src: "/images/10 Богородица Љевишка-min.jpg",
-  //   alt: "Богородица Љевишка",
-  //   title: "Богородица Љевишка",
-  // },
-  // {
-  //   src: "/images/11 Црква св Ђорђа Призрен-min.jpg",
-  //   alt: "Црква св Ђорђа Призрен",
-  //   title: "Црква св Ђорђа Призрен",
-  // },
-  // {
-  //   src: "/images/12 Виница цара Душана-min.jpg",
-  //   alt: "Виница цара Душана",
-  //   title: "Виница цара Душана",
-  // },
-  // {
-  //   src: "/images/13 Црква св Стефана Велика Хоча-min.jpg",
-  //   alt: "Црква св Стефана Велика Хоča",
-  //   title: "Црква св Стефана Велика Хоча",
-  // },
-
-  // {
-  //   src: "/images/15 Споменик на Косову пољу-min.jpg",
-  //   alt: "Споменик на Косову пољу",
-  //   title: "Споменик на Косову пољу",
-  // },
   {
     src: "/images/IMG-20250505-WA0004.jpg",
     alt: "Kosovo i Metohija",
@@ -76,11 +55,13 @@ const heroImages = [
     src: "/images/IMG_20250427_125710-min.jpg",
     alt: "Kosovo i Metohija",
     title: "Kosovo i Metohija",
+    objectPosition: "center 100%",
   },
   {
     src: "/images/IMG_20250927_101149-min.jpg",
     alt: "Kosovo i Metohija",
     title: "Kosovo i Metohija",
+    objectPosition: "center 70%",
   },
   {
     src: "/images/IMG_20250426_073230-min.jpg",
@@ -89,16 +70,65 @@ const heroImages = [
   },
 ];
 
+const HERO_SLIDER_QUERY = `*[_type == "heroSlider" && aktivan == true][0] {
+  _id,
+  naziv,
+  aktivan,
+  slike[] {
+    slika,
+    objectPosition
+  },
+  intervalRotacije
+}`;
+
 export default function HeroSection() {
+  const [heroImages, setHeroImages] = useState<HeroImage[]>(defaultHeroImages);
+  const [intervalDuration, setIntervalDuration] = useState(5000);
+  const [loading, setLoading] = useState(true);
   const [currentImage, setCurrentImage] = useState(0);
 
+  // Fetch hero slider data from Sanity
+  useEffect(() => {
+    async function fetchHeroSlider() {
+      // Don't fetch if using placeholder project ID
+      if (projectId === 'demo-project-id' || !projectId || projectId.length < 5) {
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const data: HeroSlider = await client.fetch(HERO_SLIDER_QUERY);
+
+        if (data && data.slike && data.slike.length > 0) {
+          // Transform Sanity data to HeroImage format
+          const transformedImages: HeroImage[] = data.slike.map((slide, index) => ({
+            src: urlFor(slide.slika).width(1920).quality(90).url(),
+            alt: "Hero slika",
+            title: "Hero slika",
+            objectPosition: slide.objectPosition,
+          }));
+
+          setHeroImages(transformedImages);
+          setIntervalDuration(data.intervalRotacije * 1000); // Convert to milliseconds
+        }
+      } catch (error) {
+        console.warn('Hero slider not configured in Sanity - using default images');
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchHeroSlider();
+  }, []);
+
+  // Auto-rotate images
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % heroImages.length);
-    }, 5000); // Мења слику сваких 5 секунди
+    }, intervalDuration);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [heroImages.length, intervalDuration]);
 
   const nextImage = () => {
     setCurrentImage((prev) => (prev + 1) % heroImages.length);
@@ -114,9 +144,19 @@ export default function HeroSection() {
     setCurrentImage(index);
   };
 
+  if (loading) {
+    return (
+      <section id="home" className="relative h-screen overflow-hidden bg-gray-200 animate-pulse">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-gray-400">Учитавање...</div>
+        </div>
+      </section>
+    );
+  }
+
   return (
-    <section id="home" className="relative h-screen  overflow-hidden">
-      {/* Слајдер позадина */}
+    <section id="home" className="relative h-screen overflow-hidden">
+      {/* Slider Background */}
       {heroImages.map((image, index) => (
         <div
           key={index}
@@ -129,9 +169,10 @@ export default function HeroSection() {
             alt={image.alt}
             title={image.title}
             fill
-            className={`object-cover ${
-              index === heroImages.length - 4 ? "object-[center_100%]" : ""
-            } ${index === heroImages.length - 2 ? "object-[center_70%]" : ""} ${index === 0 ? "object-[center_70%]" : ""}`}
+            className="object-cover"
+            style={{
+              objectPosition: image.objectPosition || "center center",
+            }}
             priority={index === 0}
             quality={90}
           />
@@ -140,7 +181,7 @@ export default function HeroSection() {
 
       <div className="absolute inset-0 bg-black/30" />
 
-      {/* Навигациони дугмићи */}
+      {/* Navigation Buttons */}
       <button
         onClick={prevImage}
         className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all backdrop-blur-sm"
@@ -157,26 +198,14 @@ export default function HeroSection() {
         <ChevronRight className="w-6 h-6" />
       </button>
 
-      {/* Садржај */}
-      <div className="relative flex items-end h-full z-10  text-white max-w-7xl px-4 mt-auto mx-auto">
-        <h1 className="text-2xl md:text-4xl mx-auto mt-20 font-bold mb-16 animate-fade-in  text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 ">
+      {/* Content */}
+      <div className="relative flex items-end h-full z-10 text-white max-w-7xl px-4 mt-auto mx-auto">
+        <h1 className="text-2xl md:text-4xl mx-auto mt-20 font-bold mb-16 animate-fade-in text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">
           Одаберите путовање по жељи, yпознајте свој духовни код!
         </h1>
-
-        {/* <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-delay-2">
-          <a href="#destinations">
-            <Button
-              size="lg"
-              className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-6"
-            >
-              Istražite Ponudu
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-          </a>
-        </div> */}
       </div>
 
-      {/* Индикатори */}
+      {/* Indicators */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
         {heroImages.map((_, index) => (
           <button
