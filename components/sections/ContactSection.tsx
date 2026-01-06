@@ -32,24 +32,36 @@ export default function ContactSection() {
     setIsSubmitting(true);
 
     const formData = new FormData(e.currentTarget);
-    
+    const data = {
+      ime: formData.get('ime'),
+      prezime: formData.get('prezime'),
+      email: formData.get('email'),
+      telefon: formData.get('telefon'),
+      message: formData.get('message')
+    };
+
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
-        body: formData
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
       });
 
-      if (response.ok) {
+      const result = await response.json();
+
+      if (response.ok && result.success) {
         setIsSubmitted(true);
         // Reset form
         (e.target as HTMLFormElement).reset();
-        
+
         // Reset success message after 5 seconds
         setTimeout(() => {
           setIsSubmitted(false);
         }, 5000);
       } else {
-        throw new Error('Грешка при слању поруке');
+        throw new Error(result.message || 'Грешка при слању поруке');
       }
     } catch (error) {
       alert('Дошло је до грешке. Молимо покушајте поново.');
@@ -106,15 +118,6 @@ export default function ContactSection() {
               )}
               
               <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Web3Forms приступни кључ */}
-                <input type="hidden" name="access_key" value={process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY} />
-                
-                {/* Honeypot заштита од спама */}
-                <input type="checkbox" name="botcheck" className="hidden" style={{display: 'none'}} />
-                
-                {/* Преусмери након слања */}
-                <input type="hidden" name="redirect" value="false" />
-                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="ime" className="block text-sm font-medium text-gray-700 mb-2">

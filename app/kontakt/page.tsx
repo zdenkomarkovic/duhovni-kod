@@ -34,14 +34,26 @@ export default function KontaktPage() {
     setIsSubmitting(true);
 
     const formData = new FormData(e.currentTarget);
+    const data = {
+      ime: formData.get('ime'),
+      prezime: formData.get('prezime'),
+      email: formData.get('email'),
+      telefon: formData.get('telefon'),
+      message: formData.get('message')
+    };
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData,
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
       });
 
-      if (response.ok) {
+      const result = await response.json();
+
+      if (response.ok && result.success) {
         setIsSubmitted(true);
         // Reset form
         (e.target as HTMLFormElement).reset();
@@ -51,7 +63,7 @@ export default function KontaktPage() {
           setIsSubmitted(false);
         }, 5000);
       } else {
-        throw new Error("Грешка при слању поруке");
+        throw new Error(result.message || "Грешка при слању поруке");
       }
     } catch (error) {
       alert("Дошло је до грешке. Молимо покушајте поново.");
@@ -114,24 +126,6 @@ export default function KontaktPage() {
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Web3Forms access key */}
-                  <input
-                    type="hidden"
-                    name="access_key"
-                    value={process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY}
-                  />
-
-                  {/* Honeypot spam protection */}
-                  <input
-                    type="checkbox"
-                    name="botcheck"
-                    className="hidden"
-                    style={{ display: "none" }}
-                  />
-
-                  {/* Redirect after submission */}
-                  <input type="hidden" name="redirect" value="false" />
-
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label
