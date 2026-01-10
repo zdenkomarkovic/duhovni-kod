@@ -78,6 +78,9 @@ const PONUDA_DETAIL_QUERY = `*[_type == "ponuda" && slug.current == $slug][0] {
   datumKreiranja
 }`;
 
+// Revalidate every 60 seconds (ISR)
+export const revalidate = 60;
+
 async function getPonuda(slug: string): Promise<PonudaDetail | null> {
   // Don't fetch if using placeholder project ID
   if (
