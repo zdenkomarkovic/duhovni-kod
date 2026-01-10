@@ -15,6 +15,9 @@ import {
   ChevronLeft,
   ChevronRight,
   X,
+  Facebook,
+  MessageCircle,
+  Copy,
 } from "lucide-react";
 import Link from "next/link";
 import { PortableText } from "@portabletext/react";
@@ -103,10 +106,60 @@ interface PonudaClientProps {
 export default function PonudaClient({ ponuda }: PonudaClientProps) {
   const [selectedImage, setSelectedImage] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [isShareMenuOpen, setIsShareMenuOpen] = useState(false);
   const printRef = useRef<HTMLDivElement>(null);
 
   const handlePrint = () => {
     window.print();
+  };
+
+  const handleShare = () => {
+    // Proveri da li je mobilni uređaj
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+    // Koristi navigator.share samo na mobilnim uređajima
+    if (isMobile && navigator.share && window.isSecureContext) {
+      navigator
+        .share({
+          title: ponuda.naziv,
+          text: ponuda.kratakOpis || `Pogledajte ovu ponudu: ${ponuda.naziv}`,
+          url: window.location.href,
+        })
+        .catch(() => {
+          // Fallback to clipboard if share fails
+          navigator.clipboard.writeText(window.location.href);
+          alert("Линк је копиран у clipboard!");
+        });
+    } else {
+      // Na desktopu prikaži custom share meni
+      setIsShareMenuOpen(!isShareMenuOpen);
+    }
+  };
+
+  const shareToFacebook = () => {
+    const url = encodeURIComponent(window.location.href);
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank', 'width=600,height=400');
+    setIsShareMenuOpen(false);
+  };
+
+  const shareToViber = () => {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent(`${ponuda.naziv} - ${ponuda.kratakOpis || ''}`);
+    window.open(`viber://forward?text=${text}%20${url}`, '_blank');
+    setIsShareMenuOpen(false);
+  };
+
+  const shareToWhatsApp = () => {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent(`${ponuda.naziv} - ${ponuda.kratakOpis || ''}`);
+    window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
+    setIsShareMenuOpen(false);
+  };
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(window.location.href);
+    alert("Линк је копиран у clipboard!");
+    setIsShareMenuOpen(false);
   };
 
   const allImages = [ponuda.glavnaSlika, ...(ponuda.galerija || [])]
@@ -342,34 +395,72 @@ export default function PonudaClient({ ponuda }: PonudaClientProps) {
                   Позовите нас - 063 8815544
                 </Button>
               </a>
-              <Button
-                size="lg"
-                variant="outline"
-                onClick={() => {
-                  // Check if navigator.share is available and we're in a secure context
-                  if (navigator.share && window.isSecureContext) {
-                    navigator
-                      .share({
-                        title: ponuda.naziv,
-                        text:
-                          ponuda.kratakOpis ||
-                          `Pogledajte ovu ponudu: ${ponuda.naziv}`,
-                        url: window.location.href,
-                      })
-                      .catch(() => {
-                        // Fallback to clipboard if share fails
-                        navigator.clipboard.writeText(window.location.href);
-                        alert("Линк је копиран у clipboard!");
-                      });
-                  } else {
-                    navigator.clipboard.writeText(window.location.href);
-                    alert("Линк је копиран у clipboard!");
-                  }
-                }}
-              >
-                <Share2 className="w-4 h-4 mr-2" />
-                Подели
-              </Button>
+              <div className="relative">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  onClick={handleShare}
+                >
+                  <Share2 className="w-4 h-4 mr-2" />
+                  Подели
+                </Button>
+
+                {/* Custom Share Menu - prikazuje se samo na desktopu */}
+                {isShareMenuOpen && (
+                  <>
+                    {/* Overlay za zatvaranje menija */}
+                    <div
+                      className="fixed inset-0 z-10"
+                      onClick={() => setIsShareMenuOpen(false)}
+                    />
+
+                    {/* Share Menu */}
+                    <div className="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-200 z-20 overflow-hidden">
+                      <div className="p-2">
+                        <button
+                          onClick={shareToFacebook}
+                          className="w-full flex items-center gap-3 px-4 py-3 hover:bg-blue-50 rounded-lg transition-colors text-left"
+                        >
+                          <div className="w-10 h-10 bg-[#1877F2] rounded-full flex items-center justify-center flex-shrink-0">
+                            <Facebook className="w-5 h-5 text-white" />
+                          </div>
+                          <span className="font-medium text-gray-700">Подели на Facebook</span>
+                        </button>
+
+                        <button
+                          onClick={shareToViber}
+                          className="w-full flex items-center gap-3 px-4 py-3 hover:bg-purple-50 rounded-lg transition-colors text-left"
+                        >
+                          <div className="w-10 h-10 bg-[#7360F2] rounded-full flex items-center justify-center flex-shrink-0">
+                            <MessageCircle className="w-5 h-5 text-white" />
+                          </div>
+                          <span className="font-medium text-gray-700">Подели на Viber</span>
+                        </button>
+
+                        <button
+                          onClick={shareToWhatsApp}
+                          className="w-full flex items-center gap-3 px-4 py-3 hover:bg-green-50 rounded-lg transition-colors text-left"
+                        >
+                          <div className="w-10 h-10 bg-[#25D366] rounded-full flex items-center justify-center flex-shrink-0">
+                            <MessageCircle className="w-5 h-5 text-white" />
+                          </div>
+                          <span className="font-medium text-gray-700">Подели на WhatsApp</span>
+                        </button>
+
+                        <button
+                          onClick={copyToClipboard}
+                          className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 rounded-lg transition-colors text-left"
+                        >
+                          <div className="w-10 h-10 bg-gray-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <Copy className="w-5 h-5 text-white" />
+                          </div>
+                          <span className="font-medium text-gray-700">Копирај линк</span>
+                        </button>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
             </div>
 
             {/* Contact Info */}
